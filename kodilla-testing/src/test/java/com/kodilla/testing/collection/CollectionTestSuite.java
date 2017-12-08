@@ -1,4 +1,5 @@
 package com.kodilla.testing.collection;
+
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -6,24 +7,38 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 
-class CollectionTestSuite {
-    int i = 0;
+public class CollectionTestSuite {
 
     @Before
     public void before() {
 
-        System.out.println("Start testu" + i);
-        i++;
+        System.out.println("Start testu Collection ");
     }
+
     @After
     public void after() {
-        System.out.println("Koniec testu " + i);
+        System.out.println("Koniec testu Collection ");
+
     }
 
     @Test
     public void testOddNumbersExterminatorEmptyList() {
 //given
-        System.out.println("Start testu - testOddNumbersExterminatorEmptyList");
+        ArrayList<Integer> numbers = new ArrayList<Integer>();
+
+        OddNumbersExterminator packNumbers = new OddNumbersExterminator();
+        packNumbers.exterminate(numbers);
+
+//when
+        ArrayList<Integer> listEven = packNumbers.getListEven();
+//then
+        Assert.assertTrue(numbers.isEmpty() && listEven.isEmpty());
+    }
+
+    @Test
+    public void testOddNumbersExterminatorNormalList() {
+//given
+
         ArrayList<Integer> numbers = new ArrayList<Integer>();
         numbers.add(1);
         numbers.add(2);
@@ -35,15 +50,16 @@ class CollectionTestSuite {
         numbers.add(13);
         OddNumbersExterminator packNumbers = new OddNumbersExterminator();
         packNumbers.exterminate(numbers);
-        packNumbers.show();
-
 //when
-        numbers.clear();
         ArrayList<Integer> listEven = packNumbers.getListEven();
-
-
+        ArrayList<Integer> testEvenList = new ArrayList<Integer>();
+        for (Integer currentNumber : numbers) {
+            if (currentNumber % 2 == 0) {
+                testEvenList.add(currentNumber);
+            }
+        }
 //then
-        Assert.assertTrue((numbers.size() == 0) && (listEven.size() == 0));
-        System.out.println("Koniec testu - testOddNumbersExterminatorEmptyList");
+//      Assert.assertTrue(testEvenList.size()==listEven.size());
+        Assert.assertEquals(testEvenList, listEven);
     }
 }
