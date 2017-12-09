@@ -27,8 +27,9 @@ public class OddNumbersExterminator {
             System.out.print(numbers.get(i));
             System.out.print(" ");
         }
-    }*/
- /*   public ArrayList<Integer> numbers() {
-        return this.numbers;
-    }*/
+    /
+    public ArrayList<Integer> getNumbers() {
+        return numbers;
+    }
+    */
 }

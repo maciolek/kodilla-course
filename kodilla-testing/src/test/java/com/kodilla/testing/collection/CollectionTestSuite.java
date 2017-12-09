@@ -51,13 +51,9 @@ public class CollectionTestSuite {
         OddNumbersExterminator packNumbers = new OddNumbersExterminator();
         packNumbers.exterminate(numbers);
 //when
-        ArrayList<Integer> listEven = packNumbers.getListEven();
-        ArrayList<Integer> testEvenList = new ArrayList<Integer>();
-        for (Integer currentNumber : numbers) {
-            if (currentNumber % 2 == 0) {
-                testEvenList.add(currentNumber);
-            }
-        }
+        ArrayList<Integer> listEven = packNumbers.numbers();
+        ArrayList<Integer> expectedNumbers = Arrays.asList(2,4,10,12);
+                }
 //then
 //      Assert.assertTrue(testEvenList.size()==listEven.size());
         Assert.assertEquals(testEvenList, listEven);
