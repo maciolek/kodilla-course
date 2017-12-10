@@ -5,20 +5,21 @@ import java.lang.*;
 
 
 public class OddNumbersExterminator {
-  /*  ArrayList<Integer> listEven;
+    ArrayList<Integer> listEven;
     public OddNumbersExterminator() {
         listEven = new ArrayList<Integer>();
-    }*/
+    }
     public ArrayList<Integer> exterminate(ArrayList<Integer> numbers) {
         for (Integer currentNumber : numbers) {
-            System.out.print(currentNumber);
-            if (currentNumber % 2 != 0) {
-                System.out.print(currentNumber);
-                numbers.remove(currentNumber);
+   //         System.out.print(currentNumber);
+            if (currentNumber % 2 == 0) {
+  //              System.out.print(currentNumber);
+                listEven.add(currentNumber);
+//                numbers.remove(currentNumber);
           //      System.out.print(numbers.get(currentNumber));
             }
         }
-            return numbers;
+            return listEven;
     }
 
  /*   public void show() {
@@ -27,9 +28,9 @@ public class OddNumbersExterminator {
             System.out.print(numbers.get(i));
             System.out.print(" ");
         }
-    /
-    public ArrayList<Integer> getNumbers() {
-        return numbers;
-    }
     */
+    public ArrayList<Integer> getListEven() {
+        return listEven;
+    }
+
 }

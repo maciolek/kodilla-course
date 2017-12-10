@@ -11,34 +11,28 @@ public class CollectionTestSuite {
 
     @Before
     public void before() {
-
         System.out.println("Start testu Collection ");
     }
 
     @After
     public void after() {
         System.out.println("Koniec testu Collection ");
-
     }
-
     @Test
     public void testOddNumbersExterminatorEmptyList() {
+
 //given
         ArrayList<Integer> numbers = new ArrayList<Integer>();
-
         OddNumbersExterminator packNumbers = new OddNumbersExterminator();
         packNumbers.exterminate(numbers);
-
 //when
         ArrayList<Integer> listEven = packNumbers.getListEven();
 //then
-        Assert.assertTrue(numbers.isEmpty() && listEven.isEmpty());
+        Assert.assertEquals(numbers.isEmpty(),listEven.isEmpty());
     }
-
     @Test
     public void testOddNumbersExterminatorNormalList() {
 //given
-
         ArrayList<Integer> numbers = new ArrayList<Integer>();
         numbers.add(1);
         numbers.add(2);
@@ -51,11 +45,16 @@ public class CollectionTestSuite {
         OddNumbersExterminator packNumbers = new OddNumbersExterminator();
         packNumbers.exterminate(numbers);
 //when
-        ArrayList<Integer> listEven = packNumbers.numbers();
-        ArrayList<Integer> expectedNumbers = Arrays.asList(2,4,10,12);
-                }
+        ArrayList<Integer> listEven = packNumbers.getListEven();
+        ArrayList<Integer> expectedNumbers = new ArrayList<Integer>();
+        //Arrays.asList(2,4,10,12);
+        expectedNumbers.add(2);
+        expectedNumbers.add(4);
+        expectedNumbers.add(10);
+        expectedNumbers.add(12);
+
 //then
 //      Assert.assertTrue(testEvenList.size()==listEven.size());
-        Assert.assertEquals(testEvenList, listEven);
-    }
+        Assert.assertEquals(expectedNumbers, listEven);
+}
 }
