@@ -1,9 +1,6 @@
 package com.kodilla.testing.shape;
 
-import com.kodilla.testing.com.kodilla.testing.shape.Circle;
-import com.kodilla.testing.com.kodilla.testing.shape.ShapeCollector;
-import com.kodilla.testing.com.kodilla.testing.shape.Square;
-import com.kodilla.testing.com.kodilla.testing.shape.Triangle;
+import com.kodilla.testing.com.kodilla.testing.shape.*;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -18,11 +15,11 @@ private static int counter=1;
     }
     @After
     public void After(){
-        System.out.println("Start testu nr " + counter );
+        System.out.println("Koniec testu nr " + counter );
         counter++;
     }
-    @Test
 
+    @Test
     public void testAddFigure(){
 //given
         ShapeCollector objShapeCollector = new ShapeCollector();
@@ -33,9 +30,39 @@ private static int counter=1;
     }
 
     @Test
-
-    public void removeFigure(){
+    public void testRemoveFigure() {
 //given
         ShapeCollector objShapeCollector = new ShapeCollector();
+        Shape circle = new Circle(2.0);
+        objShapeCollector.addFigure(circle);
+//when
+        objShapeCollector.removeFigure(circle);
+//then
+        Assert.assertEquals(0,objShapeCollector.shapesList.size());
+    }
+
+    @Test
+    public void testGetFigure(){
+//given
+        ShapeCollector objShapeCollector = new ShapeCollector();
+        Shape circle = new Circle(2.0);
+        objShapeCollector.addFigure(circle);
+//when
+        Shape expectedFigure = objShapeCollector.getFigure(0);
+//then
+        Assert.assertEquals(expectedFigure,circle);
+    }
+
+    @Test
+    public void testShowFigures(){
+//given
+        ShapeCollector objShapeCollector = new ShapeCollector();
+        Shape circle = new Circle(2.0);
+        objShapeCollector.addFigure(circle);
+        objShapeCollector.showFigures();
+//when
+//then
+        Assert.assertEquals(1,objShapeCollector.shapesList.size());
     }
 }
+
