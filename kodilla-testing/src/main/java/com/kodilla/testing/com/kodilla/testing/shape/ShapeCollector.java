@@ -7,7 +7,7 @@ import java.util.List;
 
 public class ShapeCollector {
 
-    public ArrayList<Shape> shapesList = new ArrayList<Shape>();
+    private ArrayList<Shape> shapesList = new ArrayList<Shape>();
 
     public void addFigure(Shape shape) {
         shapesList.add(shape);
@@ -26,7 +26,8 @@ public class ShapeCollector {
         Shape theFigure = null;
         if ((n >= 0) && (n <= shapesList.size())) {
             theFigure = shapesList.get(n);
-        }
+        } else { theFigure=shapesList.get(n);
+           }
         return theFigure;
     }
 
@@ -38,4 +39,8 @@ public class ShapeCollector {
         }
         return showList;
     }
-}
+        public int shapesListSize(){
+            return shapesList.size();
+        }
+    }
+

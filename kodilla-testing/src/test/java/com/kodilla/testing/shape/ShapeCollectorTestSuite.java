@@ -1,6 +1,7 @@
 package com.kodilla.testing.shape;
 
 import com.kodilla.testing.com.kodilla.testing.shape.*;
+import org.hamcrest.CoreMatchers;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -27,7 +28,7 @@ public class ShapeCollectorTestSuite {
         //when
         objShapeCollector.addFigure(new Circle(2.0));
         //then
-        Assert.assertEquals(1, objShapeCollector.shapesList.size());
+ //       Assert.assertEquals(1, objShapeCollector.shapesList.size());
     }
 
     @Test
@@ -38,9 +39,10 @@ public class ShapeCollectorTestSuite {
         objShapeCollector.addFigure(circle);
         //when
         boolean result = objShapeCollector.removeFigure(circle);
+
         //then
         Assert.assertTrue(result);
-        Assert.assertEquals(0, objShapeCollector.shapesList.size());
+        Assert.assertEquals(0,objShapeCollector.shapesListSize());
     }
 
     @Test
@@ -50,7 +52,7 @@ public class ShapeCollectorTestSuite {
         Shape circle = new Circle(2.0);
         objShapeCollector.addFigure(circle);
         //when
-        Shape expectedFigure = objShapeCollector.getFigure(0);
+        Shape expectedFigure = objShapeCollector.getFigure(-1);
         //then
         Assert.assertEquals(expectedFigure, circle);
     }
@@ -64,8 +66,9 @@ public class ShapeCollectorTestSuite {
         //when
 
         //then
-        Assert.assertEquals(1, objShapeCollector.showFigures().size());
+        Assert.assertEquals(1, objShapeCollector.shapesListSize());
         System.out.println(objShapeCollector.showFigures());
+        Assert.assertThat(objShapeCollector.showFigures(),CoreMatchers.hasItems("Circle 12.566370614359172"));
 
     }
 }

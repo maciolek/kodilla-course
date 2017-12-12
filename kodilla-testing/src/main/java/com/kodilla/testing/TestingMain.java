@@ -17,7 +17,7 @@ public class TestingMain {
         objShapeCollector.removeFigure(circle1);
 
         System.out.println(objShapeCollector.showFigures());
-
+        System.out.println(objShapeCollector.shapesListSize());
 
     }
 }
