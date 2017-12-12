@@ -7,11 +7,9 @@ public class Square implements Shape {
     public Square(Double side) {
         this.side = side;
     }
-
     public String getShapeName() {
         return "Square";
     }
-
     public Double getField() {
         return Math.pow(side,2.0);
     }

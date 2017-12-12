@@ -11,15 +11,21 @@ public class ShapeCollector {
         shapesList.add(shape);
     }
 
-    public void removeFigure(Shape shape) {
-        shapesList.remove(shape);
+    public boolean removeFigure(Shape shape) {
+        boolean result = false;
+        if (shapesList.contains(shape)) {
+            shapesList.remove(shape);
+            result = true;
+        }
+        return result;
     }
-
     public Shape getFigure(int n) {
-        Shape getFigure = shapesList.get(n);
-        return getFigure;
+        Shape theFigure =null;
+        if ((n >= 0) && (n <= shapesList.size())){
+            theFigure = shapesList.get(n);
+        }
+        return theFigure;
     }
-
     public void showFigures() {
         System.out.println("Shapes with fields: ");
         for (Shape currentShape : shapesList) {

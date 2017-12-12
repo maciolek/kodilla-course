@@ -13,8 +13,9 @@ public class TestingMain {
         objShapeCollector.addFigure(square1);
         objShapeCollector.addFigure(tringle1);
         objShapeCollector.removeFigure(circle1);
-
         objShapeCollector.showFigures();
+
+
     }
 }
 
