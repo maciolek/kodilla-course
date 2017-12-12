@@ -22,50 +22,51 @@ public class ShapeCollectorTestSuite {
 
     @Test
     public void testAddFigure() {
-    //given
+        //given
         ShapeCollector objShapeCollector = new ShapeCollector();
-    //when
+        //when
         objShapeCollector.addFigure(new Circle(2.0));
-    //then
+        //then
         Assert.assertEquals(1, objShapeCollector.shapesList.size());
     }
 
     @Test
     public void testRemoveFigure() {
-    //given
+        //given
         ShapeCollector objShapeCollector = new ShapeCollector();
         Shape circle = new Circle(2.0);
         objShapeCollector.addFigure(circle);
-    //when
+        //when
         boolean result = objShapeCollector.removeFigure(circle);
-    //then
+        //then
         Assert.assertTrue(result);
         Assert.assertEquals(0, objShapeCollector.shapesList.size());
     }
 
     @Test
     public void testGetFigure() {
-    //given
+        //given
         ShapeCollector objShapeCollector = new ShapeCollector();
         Shape circle = new Circle(2.0);
         objShapeCollector.addFigure(circle);
-    //when
+        //when
         Shape expectedFigure = objShapeCollector.getFigure(0);
-    //then
+        //then
         Assert.assertEquals(expectedFigure, circle);
     }
 
     @Test
     public void testShowFigures() {
-    //given
+        //given
         ShapeCollector objShapeCollector = new ShapeCollector();
         Shape circle = new Circle(2.0);
         objShapeCollector.addFigure(circle);
-        objShapeCollector.showFigures();
-    //when
+        //when
 
-    //then
-        Assert.assertEquals(1, objShapeCollector.shapesList.size());
+        //then
+        Assert.assertEquals(1, objShapeCollector.showFigures().size());
+        System.out.println(objShapeCollector.showFigures());
+
     }
 }
 
