@@ -9,8 +9,13 @@ public class ShapeCollector {
 
     private ArrayList<Shape> shapesList = new ArrayList<Shape>();
 
-    public void addFigure(Shape shape) {
+    public boolean addFigure(Shape shape) {
+        boolean result = false;
         shapesList.add(shape);
+        if (shapesList.contains(shape)) {
+            result = true;
+        }
+        return result;
     }
 
     public boolean removeFigure(Shape shape) {
@@ -26,8 +31,7 @@ public class ShapeCollector {
         Shape theFigure = null;
         if ((n >= 0) && (n <= shapesList.size())) {
             theFigure = shapesList.get(n);
-        } else { theFigure=shapesList.get(n);
-           }
+        }
         return theFigure;
     }
 
@@ -39,8 +43,9 @@ public class ShapeCollector {
         }
         return showList;
     }
-        public int shapesListSize(){
-            return shapesList.size();
-        }
+
+    public int shapesListSize() {
+        return shapesList.size();
     }
+}
 

@@ -26,9 +26,10 @@ public class ShapeCollectorTestSuite {
         //given
         ShapeCollector objShapeCollector = new ShapeCollector();
         //when
-        objShapeCollector.addFigure(new Circle(2.0));
+        Shape circle = new Circle(2.0);
+        boolean result = objShapeCollector.addFigure(circle);
         //then
- //       Assert.assertEquals(1, objShapeCollector.shapesList.size());
+        Assert.assertTrue(result);
     }
 
     @Test
@@ -44,7 +45,6 @@ public class ShapeCollectorTestSuite {
         Assert.assertTrue(result);
         Assert.assertEquals(0,objShapeCollector.shapesListSize());
     }
-
     @Test
     public void testGetFigure() {
         //given
@@ -56,7 +56,6 @@ public class ShapeCollectorTestSuite {
         //then
         Assert.assertEquals(expectedFigure, circle);
     }
-
     @Test
     public void testShowFigures() {
         //given
@@ -67,9 +66,7 @@ public class ShapeCollectorTestSuite {
 
         //then
         Assert.assertEquals(1, objShapeCollector.shapesListSize());
-        System.out.println(objShapeCollector.showFigures());
         Assert.assertThat(objShapeCollector.showFigures(),CoreMatchers.hasItems("Circle 12.566370614359172"));
-
     }
 }
 
