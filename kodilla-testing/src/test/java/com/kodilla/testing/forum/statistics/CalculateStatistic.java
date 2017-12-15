@@ -43,7 +43,7 @@ public class CalculateStatistic {
         System.out.println("Srednia ilość korzymenta na post " + averageNumbersCommentsOfPost);
     }
 
-    public double getNumbersOfUsers() {
+    public int getNumbersOfUsers() {
         return numbersOfUsers;
     }
 
