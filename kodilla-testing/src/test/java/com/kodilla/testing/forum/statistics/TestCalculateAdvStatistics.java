@@ -151,7 +151,7 @@ public class TestCalculateAdvStatistics {
         Assert.assertEquals(0.5, AverageNumbersCommentsOfPost, 0);
         Assert.assertEquals(0.5, AverageNumbersCommentsOfUser, 0);
         Assert.assertEquals(1.0, AverageNumbersPostOfUser, 0);
-        System.out.println("Test gdy liczba komentarzy jest mniejsza niż liczba postów ");
+        System.out.println("Test gdy liczba komentarzy jest mniejsza niż liczba postów");
         calculateStatistic.showStatistics();
     }
 
