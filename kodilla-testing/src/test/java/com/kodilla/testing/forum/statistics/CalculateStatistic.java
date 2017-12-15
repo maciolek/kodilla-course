@@ -58,4 +58,12 @@ public class CalculateStatistic {
     public double getAverageNumbersPostOfUser() {
         return averageNumbersPostOfUser;
     }
+
+    public int getNumberOfPosts() {
+        return numberOfPosts;
+    }
+
+    public int getNumbersOfCommets() {
+        return numbersOfCommets;
+    }
 }

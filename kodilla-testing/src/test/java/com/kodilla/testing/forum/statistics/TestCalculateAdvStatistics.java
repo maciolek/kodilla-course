@@ -36,7 +36,7 @@ public class TestCalculateAdvStatistics {
         for (int i = 0; i < 100; i++) {
             usersNames.add("Name" + i);
         }
-        int postCount = 200;
+        int postCount = 0;
         int commentsCount = 500;
 
         CalculateStatistic calculateStatistic = new CalculateStatistic(statisticsMock);
@@ -49,11 +49,14 @@ public class TestCalculateAdvStatistics {
         double AverageNumbersCommentsOfPost = calculateStatistic.getAverageNumbersCommentsOfPost();
         double AverageNumbersCommentsOfUser = calculateStatistic.getAverageNumbersCommentsOfUser();
         double AverageNumbersPostOfUser = calculateStatistic.getAverageNumbersPostOfUser();
+        int numberOfPostsIsNull =calculateStatistic.getNumberOfPosts();
 
         //then
-        Assert.assertEquals(2.5, AverageNumbersCommentsOfPost, 0);
+        Assert.assertEquals(0, numberOfPostsIsNull);
+        Assert.assertEquals(0, AverageNumbersCommentsOfPost, 0);
         Assert.assertEquals(5.0, AverageNumbersCommentsOfUser, 0);
-        Assert.assertEquals(2.0, AverageNumbersPostOfUser, 0);
+        Assert.assertEquals(0, AverageNumbersPostOfUser, 0);
+
         System.out.println("Test gdy liczba postów = 0");
         calculateStatistic.showStatistics();
     }
@@ -76,7 +79,6 @@ public class TestCalculateAdvStatistics {
         calculateStatistic.calculateAdvStatistics(statisticsMock);
 
         //when
-        double numbersOfUsers = calculateStatistic.getNumbersOfUsers();
         double AverageNumbersCommentsOfPost = calculateStatistic.getAverageNumbersCommentsOfPost();
         double AverageNumbersCommentsOfUser = calculateStatistic.getAverageNumbersCommentsOfUser();
         double AverageNumbersPostOfUser = calculateStatistic.getAverageNumbersPostOfUser();
@@ -107,12 +109,13 @@ public class TestCalculateAdvStatistics {
         calculateStatistic.calculateAdvStatistics(statisticsMock);
 
         //when
-        double numbersOfUsers = calculateStatistic.getNumbersOfUsers();
+        double numbersOfCommentsIsNull = calculateStatistic.getNumbersOfCommets();
         double AverageNumbersCommentsOfPost = calculateStatistic.getAverageNumbersCommentsOfPost();
         double AverageNumbersCommentsOfUser = calculateStatistic.getAverageNumbersCommentsOfUser();
         double AverageNumbersPostOfUser = calculateStatistic.getAverageNumbersPostOfUser();
 
         //then
+        Assert.assertEquals(0, numbersOfCommentsIsNull, 0);
         Assert.assertEquals(0.0, AverageNumbersCommentsOfPost, 0);
         Assert.assertEquals(0.0, AverageNumbersCommentsOfUser, 0);
         Assert.assertEquals(10.0, AverageNumbersPostOfUser, 0);
@@ -198,11 +201,13 @@ public class TestCalculateAdvStatistics {
         calculateStatistic.calculateAdvStatistics(statisticsMock);
 
         //when
+        double numbersOfUsersIsNull = calculateStatistic.getNumbersOfUsers();
         double AverageNumbersCommentsOfPost = calculateStatistic.getAverageNumbersCommentsOfPost();
         double AverageNumbersCommentsOfUser = calculateStatistic.getAverageNumbersCommentsOfUser();
         double AverageNumbersPostOfUser = calculateStatistic.getAverageNumbersPostOfUser();
 
         //then
+        Assert.assertEquals(0.0, numbersOfUsersIsNull, 0);
         Assert.assertEquals(5.0, AverageNumbersCommentsOfPost, 0);
         Assert.assertEquals(0.0, AverageNumbersCommentsOfUser, 0);
         Assert.assertEquals(0.0, AverageNumbersPostOfUser, 0);
