@@ -33,6 +33,8 @@ public class CalculateStatistic {
             averageNumbersCommentsOfPost = (double) numbersOfCommets / (double) numberOfPosts;
         }
     }
+
+
     public void showStatistics() {
         System.out.println("Ilość użytkowników " + numbersOfUsers);
         System.out.println("Ilość postów " + numberOfPosts);

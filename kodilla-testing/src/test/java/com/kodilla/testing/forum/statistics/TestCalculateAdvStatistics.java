@@ -11,6 +11,7 @@ import java.util.List;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+
 public class TestCalculateAdvStatistics {
 
     private static int counter = 1;
@@ -24,6 +25,7 @@ public class TestCalculateAdvStatistics {
     public void after() {
         System.out.println("Koniec testu" + counter);
         counter++;
+
     }
 
     @Test
@@ -54,6 +56,8 @@ public class TestCalculateAdvStatistics {
         Assert.assertEquals(0, AverageNumbersCommentsOfPost, 0);
         Assert.assertEquals(5.0, AverageNumbersCommentsOfUser, 0);
         Assert.assertEquals(0, AverageNumbersPostOfUser, 0);
+
+
         System.out.println("Test gdy liczba postów = 0");
         calculateStatistic.showStatistics();
     }
