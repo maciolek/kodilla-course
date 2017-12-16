@@ -1,5 +1,7 @@
 package com.kodilla.stream;
 
+import com.kodilla.stream.beautifier.MyBeautyfier;
+import com.kodilla.stream.beautifier.PoemBeautifier;
 import com.kodilla.stream.lambda.ExecuteSaySomething;
 import com.kodilla.stream.lambda.Executor;
 import com.kodilla.stream.lambda.ExpressionExecutor;
@@ -9,7 +11,13 @@ import com.sun.org.apache.xpath.internal.SourceTree;
 
 public class StreamMain {
     public static void main(String[] args) {
-// mod 7.1
+
+        PoemBeautifier poemBeautifier = new PoemBeautifier();
+        poemBeautifier.beautify("\nNauka JAVA to sama przyjemność! :-D",String::toUpperCase);
+        poemBeautifier.beautify("Nauka JAVY zajmuje mnóstwo czasu!", (text) -> MyBeautyfier.beautifierAddLineInHash(text));
+        poemBeautifier.beautify("Umiem coraz wiecej", (text) -> MyBeautyfier.beautifierOneLineOneChar(text));
+
+/*// mod 7.1
         Processor processor = new Processor();
         ExecuteSaySomething executeSaySomething = new ExecuteSaySomething();
         processor.execute(executeSaySomething);
@@ -29,6 +37,6 @@ public class StreamMain {
         expressionExecutor.executeExpression(5,5, FunctionalCalculator::addAToB);
         expressionExecutor.executeExpression(10,8, FunctionalCalculator::subBFromA);
         expressionExecutor.executeExpression(20,5, FunctionalCalculator::multiplyAByB);
-        expressionExecutor.executeExpression(3,3,FunctionalCalculator::divideAByB);
+        expressionExecutor.executeExpression(3,3,FunctionalCalculator::divideAByB);*/
     }
 }
