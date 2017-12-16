@@ -54,7 +54,7 @@ public class ShapeCollectorTestSuite {
         //when
         Shape expectedFigure = objShapeCollector.getFigure(-1);
         //then
-        Assert.assertEquals(expectedFigure, circle);
+        Assert.assertEquals(null, expectedFigure);
     }
     @Test
     public void testShowFigures() {
