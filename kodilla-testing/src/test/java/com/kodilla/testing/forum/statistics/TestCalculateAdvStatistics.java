@@ -49,7 +49,7 @@ public class TestCalculateAdvStatistics {
         double AverageNumbersCommentsOfPost = calculateStatistic.getAverageNumbersCommentsOfPost();
         double AverageNumbersCommentsOfUser = calculateStatistic.getAverageNumbersCommentsOfUser();
         double AverageNumbersPostOfUser = calculateStatistic.getAverageNumbersPostOfUser();
-        int numberOfPostsIsNull =calculateStatistic.getNumberOfPosts();
+        int numberOfPostsIsNull = calculateStatistic.getNumberOfPosts();
 
         //then
         Assert.assertEquals(0, numberOfPostsIsNull);

@@ -18,7 +18,7 @@ public class CalculateStatistic {
 
     public void calculateAdvStatistics(Statistics statistics) {
         numbersOfUsers = statistics.usersNames().size();
-        numberOfPosts =  statistics.postsCount();
+        numberOfPosts = statistics.postsCount();
         numbersOfCommets = statistics.commentsCount();
         if (numbersOfUsers == 0) {
             averageNumbersPostOfUser = 0.0;
@@ -30,9 +30,10 @@ public class CalculateStatistic {
         if (numberOfPosts == 0) {
             averageNumbersCommentsOfPost = 0.0;
         } else {
-            averageNumbersCommentsOfPost = (double)numbersOfCommets / (double)numberOfPosts;
+            averageNumbersCommentsOfPost = (double) numbersOfCommets / (double) numberOfPosts;
         }
     }
+
 
     public void showStatistics() {
         System.out.println("Ilość użytkowników " + numbersOfUsers);
