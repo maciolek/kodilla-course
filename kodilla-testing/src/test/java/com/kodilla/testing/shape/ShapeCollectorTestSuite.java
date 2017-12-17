@@ -33,26 +33,61 @@ public class ShapeCollectorTestSuite {
     }
 
     @Test
-    public void testRemoveFigure() {
+    public void testRemoveFigureExist() {
         //given
         ShapeCollector objShapeCollector = new ShapeCollector();
         Shape circle = new Circle(2.0);
         objShapeCollector.addFigure(circle);
         //when
         boolean result = objShapeCollector.removeFigure(circle);
-
         //then
         Assert.assertTrue(result);
-        Assert.assertEquals(0,objShapeCollector.shapesListSize());
+        Assert.assertEquals(0, objShapeCollector.shapesListSize());
     }
+
     @Test
-    public void testGetFigure() {
+    public void testRemoveFigureObjectNotExist() {
+        //given
+        ShapeCollector objShapeCollector = new ShapeCollector();
+        Shape circle = new Circle(2.0);
+        Shape triangle = new Triangle(5.0, 5.0);
+        objShapeCollector.addFigure(circle);
+        //when
+        boolean result = objShapeCollector.removeFigure(triangle);
+        //then
+        Assert.assertFalse(result);
+    }
+
+    @Test
+    public void testGetFigureUnderIndex() {
         //given
         ShapeCollector objShapeCollector = new ShapeCollector();
         Shape circle = new Circle(2.0);
         objShapeCollector.addFigure(circle);
         //when
         Shape expectedFigure = objShapeCollector.getFigure(-1);
+        //then
+        Assert.assertEquals(null, expectedFigure);
+    }
+
+    @Test
+    public void testGetFigureAboveIndex() {
+        //given
+        ShapeCollector objShapeCollector = new ShapeCollector();
+        Shape circle = new Circle(2.0);
+        objShapeCollector.addFigure(circle);
+        //when
+        Shape expectedFigure = objShapeCollector.getFigure(123);
+        //then
+        Assert.assertEquals(null, expectedFigure);
+    }
+
+    @Test
+    public void testGetFigureIndex0() {
+        //given
+        ShapeCollector objShapeCollector = new ShapeCollector();
+        //when
+        Shape expectedFigure = objShapeCollector.getFigure(123);
         //then
         Assert.assertEquals(null, expectedFigure);
     }
@@ -63,10 +98,9 @@ public class ShapeCollectorTestSuite {
         Shape circle = new Circle(2.0);
         objShapeCollector.addFigure(circle);
         //when
-
         //then
         Assert.assertEquals(1, objShapeCollector.shapesListSize());
-        Assert.assertThat(objShapeCollector.showFigures(),CoreMatchers.hasItems("Circle 12.566370614359172"));
+        Assert.assertThat(objShapeCollector.showFigures(), CoreMatchers.hasItems("Circle 12.566370614359172"));
     }
 }
 
