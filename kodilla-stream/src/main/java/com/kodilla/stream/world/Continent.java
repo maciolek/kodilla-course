@@ -3,41 +3,47 @@ package com.kodilla.stream.world;
 import com.kodilla.stream.invoice.simple.SimpleProduct;
 
 import java.math.BigDecimal;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.math.BigInteger;
+import java.util.*;
 
 public class Continent {
 
-    private final Country country;
-    private final String continent;
+    private Country country;
+    private final List<Country> nameOfContinent = new ArrayList<>();
 
-    public Continent(final Country country, final String continent) {
-        this.country = country;
-        this.continent=continent;
+    public Continent(final String nameOfContinent) {
+            if (nameOfContinent != "Europe" && nameOfContinent != "Asia" && nameOfContinent != "Africa") throw new IllegalArgumentException("bad argument");
+ //           this.country = country;
+                   }
 
+    public List<Country> getNameOfTheContinent() {
+   //     nameOfContinent.add(country);
+        return new ArrayList<>(nameOfContinent);
     }
 
-    private final Set<Country> listContinents = new HashSet<>();
+ /*   public List<Country> getListOfContinent() {
+        return new nameOfContinent(country);
+    }*/
 
-    public void AddCounrty(Country country) {
-        listContinents.add(country);
+    public void addCountry(Country country) {
+            nameOfContinent.add(country);
     }
-
-    public BigDecimal getPeopleQuantityOfCountry() {
-        return country.getPeopleQuantityOfCountry();
-    }
-
-    public Set<Country> getContinentsList() {
-        return listContinents;
-    }
+ /*   public List<Country> addCountry(Country country){
+           nameOfContinent.add(country);
+           */
 
     public Country getCountry() {
         return country;
     }
 
-}
+    public BigInteger getPeopleQuantity() {
+            return country.getPeopleQuantity();
+        }
+
+
+    }
+
+
 
 
 

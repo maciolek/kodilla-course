@@ -1,53 +1,58 @@
 package com.kodilla.stream;
 
-import com.kodilla.stream.iterate.NumbersGenerator;
 import com.kodilla.stream.world.Continent;
 import com.kodilla.stream.world.Country;
+import com.kodilla.stream.world.World;
 
-import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.util.List;
 
 public class StreamMain {
     public static void main(String[] args) {
 
-        Country country1 = new Country("Asia", "Japonia", new BigDecimal("127000000"));
-        Country country2 = new Country("Asia", "Chiny", new BigDecimal("1397000000"));
-        Country country3 = new Country("Europe", "Francja", new BigDecimal("66700000"));
-        Country country4 = new Country("Europe", "Polska", new BigDecimal("37950000"));
-        Country country5 = new Country("Africa", "Kamerun", new BigDecimal("24000000"));
-        Country country6 = new Country("Africa", "Egipt", new BigDecimal("96000000"));
+        Country japonia = new Country("Japonia", new BigInteger("127000000"), "Asia");
+        Country chiny = new Country("Chiny", new BigInteger("1397000000"), "Asia");
+        Country francja = new Country("Francja", new BigInteger("66700000"), "Europe");
+        Country polska = new Country("Polska", new BigInteger("37950000"), "Europe");
+        Country kamerun = new Country("Kamerun", new BigInteger("24000000"), "Africa");
+        Country egipt = new Country("Egipt", new BigInteger("96000000"), "Africa");
 
-        }
+        Continent asia = new Continent("Asia");
+        Continent europe = new Continent("Europe");
+        Continent africa = new Continent("Africa");
+
+        asia.addCountry(japonia);
+        asia.addCountry(chiny);
+        europe.addCountry(francja);
+        europe.addCountry(polska);
+        africa.addCountry(kamerun);
+        africa.addCountry(egipt);
+
+        World world = new World();
+        world.addWorld(asia);
+        world.addWorld(europe);
+        world.addWorld(africa);
+
+        BigInteger totalPeopleQuantityAsia = asia.getNameOfTheContinent().stream()
+                .map(people -> people.getPeopleQuantity())
+                .reduce(BigInteger.ZERO, (sum, current) -> sum = sum.add(current));
+        System.out.println("Populacja Azji: " + totalPeopleQuantityAsia);
+
+        BigInteger totalPeopleQuantityEurope = europe.getNameOfTheContinent().stream()
+                .map(people -> people.getPeopleQuantity())
+                .reduce(BigInteger.ZERO, (sum, current) -> sum = sum.add(current));
+        System.out.println("Populacja Europy: " + totalPeopleQuantityEurope);
+
+        BigInteger totalPeopleQuantityAfrica = africa.getNameOfTheContinent().stream()
+                .map(people -> people.getPeopleQuantity())
+                .reduce(BigInteger.ZERO, (sum, current) -> sum = sum.add(current));
+        System.out.println("Populacja Afryki: " + totalPeopleQuantityAfrica);
+
+        List<Continent> theWorld = world.getWorld();
+
+        BigInteger totalWorldPopulation = theWorld.stream()
+                .flatMap(c -> c.getCountry().stream())
+                .reduce(BigInteger.ZERO, (sum, current) -> sum = sum.add(current));
+    }
+
 }
-
-/*        System.out.println("Using Stream to generate even numbers from 1 to 20");
-        NumbersGenerator.generateEven(20);*/
-
-
-/*        PoemBeautifier poemBeautifier = new PoemBeautifier();
-        poemBeautifier.beautify("\nNauka JAVA to sama przyjemność! :-D",String::toUpperCase);
-        poemBeautifier.beautify("Nauka JAVY zajmuje mnóstwo czasu!", MyBeautyfier::beautifierAddLineInHash);
-        poemBeautifier.beautify("Umiem coraz wiecej", (text) -> MyBeautyfier.beautifierOneLineOneChar(text));
-        */
-
-
-/*// mod 7.1
-        Processor processor = new Processor();
-        ExecuteSaySomething executeSaySomething = new ExecuteSaySomething();
-        processor.execute(executeSaySomething);
-// lambda 1 bez objektu klasy pośredniczącej!
-//        Executor executor = () -> System.out.println("0This is an example text - lambda 1");
-//        processor.executor(executor);
-//lambda 2 bez tworzenia zmiennej :-)
-//        processor.execute (()-> System.out.println("This is an example text - lambda 2"));
-//lambda z argumentami 3
-//        ExpressionExecutor expressionExecutor = new ExpressionExecutor();
-//        expressionExecutor.executeExpression(5,5,  (a, b) -> a + b);
-//        expressionExecutor.executeExpression(10,8, (a, b) -> a - b);
-//        expressionExecutor.executeExpression(20,5, (a, b) -> a / b);
-//        expressionExecutor.executeExpression(3,3,(a, b) -> a * b);
-//lambda z referencjami 4
-        ExpressionExecutor expressionExecutor = new ExpressionExecutor();
-        expressionExecutor.executeExpression(5,5, FunctionalCalculator::addAToB);
-        expressionExecutor.executeExpression(10,8, FunctionalCalculator::subBFromA);
-        expressionExecutor.executeExpression(20,5, FunctionalCalculator::multiplyAByB);
-        expressionExecutor.executeExpression(3,3,FunctionalCalculator::divideAByB);*/
