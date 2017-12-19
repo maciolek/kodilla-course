@@ -1,19 +1,26 @@
 package com.kodilla.stream;
 
-import com.kodilla.stream.beautifier.MyBeautyfier;
-import com.kodilla.stream.beautifier.PoemBeautifier;
 import com.kodilla.stream.iterate.NumbersGenerator;
-import com.kodilla.stream.lambda.ExecuteSaySomething;
-import com.kodilla.stream.lambda.Executor;
-import com.kodilla.stream.lambda.ExpressionExecutor;
-import com.kodilla.stream.lambda.Processor;
-import com.kodilla.stream.reference.FunctionalCalculator;
-import com.sun.org.apache.xpath.internal.SourceTree;
+import com.kodilla.stream.world.Continent;
+import com.kodilla.stream.world.Country;
+
+import java.math.BigDecimal;
 
 public class StreamMain {
     public static void main(String[] args) {
-        System.out.println("Using Stream to generate even numbers from 1 to 20");
-        NumbersGenerator.generateEven(20);
+
+        Country country1 = new Country("Asia", "Japonia", new BigDecimal("127000000"));
+        Country country2 = new Country("Asia", "Chiny", new BigDecimal("1397000000"));
+        Country country3 = new Country("Europe", "Francja", new BigDecimal("66700000"));
+        Country country4 = new Country("Europe", "Polska", new BigDecimal("37950000"));
+        Country country5 = new Country("Africa", "Kamerun", new BigDecimal("24000000"));
+        Country country6 = new Country("Africa", "Egipt", new BigDecimal("96000000"));
+
+        }
+}
+
+/*        System.out.println("Using Stream to generate even numbers from 1 to 20");
+        NumbersGenerator.generateEven(20);*/
 
 
 /*        PoemBeautifier poemBeautifier = new PoemBeautifier();
@@ -44,5 +51,3 @@ public class StreamMain {
         expressionExecutor.executeExpression(10,8, FunctionalCalculator::subBFromA);
         expressionExecutor.executeExpression(20,5, FunctionalCalculator::multiplyAByB);
         expressionExecutor.executeExpression(3,3,FunctionalCalculator::divideAByB);*/
-    }
-}
