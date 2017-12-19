@@ -1,7 +1,5 @@
 package com.kodilla.stream.world;
-
 import com.kodilla.stream.invoice.simple.SimpleProduct;
-
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.*;
