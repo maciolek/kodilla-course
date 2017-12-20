@@ -17,12 +17,11 @@ public class ArrayOperationsTestSuite {
         }
         return listNumbers;
     }
-
     @Test
     public void testGetAverage() {
         //given
         double sum =0.0;
-        int numbers[] = generateArray(6);
+        int numbers[] = generateArray(20);
         for (int i = 0; i < numbers.length; i++) {
             sum += numbers[i];
              }
@@ -32,9 +31,8 @@ public class ArrayOperationsTestSuite {
         //then
         Assert.assertEquals(expectedAverage,actulaAverage,0);
     }
-
     @Test
-    public void testGetAverageWhenNathingToCount() {
+    public void testGetAverageWhenArrayIsEmpty() {
         //given
         double sum =0.0;
         int numbers[] = generateArray(0);
@@ -42,10 +40,13 @@ public class ArrayOperationsTestSuite {
             sum += numbers[i];
              }
         //when
-        double expectedAverage = sum/numbers.length;
-        double actulaAverage = ArrayOperations.getAverage(numbers);
+         try {
+            double expectedAverage = sum/numbers.length;
+            double actulaAverage = ArrayOperations.getAverage(numbers);
+            Assert.fail();
+        } catch (IllegalArgumentException ex) {
+        }
         //then
-        Assert.assertEquals(expectedAverage,actulaAverage,0);
     }
 
 
