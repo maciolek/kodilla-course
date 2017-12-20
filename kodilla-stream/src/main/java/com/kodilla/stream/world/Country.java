@@ -1,37 +1,23 @@
 package com.kodilla.stream.world;
+
+import java.math.BigDecimal;
 import java.math.BigInteger;
 
 public final class Country {
 
     private final String nameCountry;
-    private final BigInteger peopleQuantityOfCountry;
-    private final String nameOfcontinent;
+    private final BigDecimal peopleQuantityOfCountry;
+    private final String nameOfContinent;
 
-    public Country(final String nameCountry, final BigInteger peopleQuantityOfCountry, final String nameOfcontinent) {
+    public Country(final String nameCountry, final BigDecimal peopleQuantityOfCountry, final String nameOfContinent) {
         this.nameCountry = nameCountry;
         this.peopleQuantityOfCountry = peopleQuantityOfCountry;
-        this.nameOfcontinent=nameOfcontinent;
-     }
-
-    public String getNameCountry() {
-        return nameCountry;
+        this.nameOfContinent = nameOfContinent;
     }
 
-    public String getNameOfcontinent() {
-        return nameOfcontinent;
-    }
-
-    public BigInteger getPeopleQuantity() {
+    public BigDecimal getPeopleQuantity() {
         return peopleQuantityOfCountry;
     }
-
-    @Override
-    public String toString() {
-        return "Country{" +
-                "nameCountry='" + nameCountry + '\'' +
-                ", peopleQuantityOfCountry=" + peopleQuantityOfCountry +
-                ", nameOfcontinent='" + nameOfcontinent + '\'' +
- //               ", listCountry=" + listCountry +
-                '}';
-    }
 }
+
+

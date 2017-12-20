@@ -1,5 +1,7 @@
 package com.kodilla.stream.world;
+
 import com.kodilla.stream.invoice.simple.SimpleProduct;
+
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.*;
@@ -7,39 +9,25 @@ import java.util.*;
 public class Continent {
 
     private Country country;
-    private final List<Country> nameOfContinent = new ArrayList<>();
+    private final List<Country> countries = new ArrayList<>();
 
-    public Continent(final String nameOfContinent) {
-            if (nameOfContinent != "Europe" && nameOfContinent != "Asia" && nameOfContinent != "Africa") throw new IllegalArgumentException("bad argument");
- //           this.country = country;
-                   }
-
-    public List<Country> getNameOfTheContinent() {
-   //     nameOfContinent.add(country);
-        return new ArrayList<>(nameOfContinent);
+    public Continent(final String continent) {
+        if (continent != "Europe" && continent != "Asia" && continent != "Africa")
+            throw new IllegalArgumentException("bad argument");
     }
 
- /*   public List<Country> getListOfContinent() {
-        return new nameOfContinent(country);
-    }*/
+    public List<Country> getCountries() {
+        return Collections.unmodifiableList(countries);
+    }
 
     public void addCountry(Country country) {
-            nameOfContinent.add(country);
-    }
- /*   public List<Country> addCountry(Country country){
-           nameOfContinent.add(country);
-           */
-
-    public Country getCountry() {
-        return country;
+        countries.add(country);
     }
 
-    public BigInteger getPeopleQuantity() {
-            return country.getPeopleQuantity();
-        }
-
-
+    public BigDecimal getPeopleQuantity() {
+        return country.getPeopleQuantity();
     }
+}
 
 
 
