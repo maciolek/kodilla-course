@@ -52,4 +52,22 @@ public class WorldTestSuite {
         BigDecimal expectedWoldQuantityPopulation = new BigDecimal(0);
         Assert.assertEquals(expectedWoldQuantityPopulation, actualWorldQuantityPopulation);
     }
+
+    @Test
+    public void testGetPeopleQuantityOfWorldWhenOneCountry() {
+        //given
+        Country japonia = new Country("Japonia", new BigDecimal("127000000"), "Asia");
+        Continent asia = new Continent("Asia");
+        asia.addCountry(japonia);
+        World world = new World();
+        world.addContinent(asia);
+
+        //when
+        BigDecimal actualWorldQuantityPopulation = world.getTotalWorldPopulation();
+
+        //then
+        BigDecimal expectedWoldQuantityPopulation = new BigDecimal(127000000);
+        Assert.assertEquals(expectedWoldQuantityPopulation, actualWorldQuantityPopulation);
+
+    }
 }
