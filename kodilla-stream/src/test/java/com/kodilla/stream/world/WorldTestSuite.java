@@ -3,7 +3,6 @@ import org.junit.Assert;
 import org.junit.Test;
 import java.math.BigDecimal;
 
-
 public class WorldTestSuite {
 
     @Test
@@ -68,6 +67,5 @@ public class WorldTestSuite {
         //then
         BigDecimal expectedWoldQuantityPopulation = new BigDecimal(127000000);
         Assert.assertEquals(expectedWoldQuantityPopulation, actualWorldQuantityPopulation);
-
     }
 }

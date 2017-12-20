@@ -1,9 +1,5 @@
 package com.kodilla.stream.world;
-
-import com.kodilla.stream.invoice.simple.SimpleProduct;
-
 import java.math.BigDecimal;
-import java.math.BigInteger;
 import java.util.*;
 
 public class Continent {
@@ -13,7 +9,7 @@ public class Continent {
 
     public Continent(final String continent) {
         if (continent != "Europe" && continent != "Asia" && continent != "Africa")
-            throw new IllegalArgumentException("bad argument");
+            throw new IllegalArgumentException("bad argument of Name of Continent(Europe/Asia/Africa");
     }
 
     public List<Country> getCountries() {
