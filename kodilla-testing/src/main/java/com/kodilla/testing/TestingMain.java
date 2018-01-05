@@ -1,14 +1,29 @@
 package com.kodilla.testing;
-import com.kodilla.testing.collection.OddNumbersExterminator;
+
+import com.kodilla.testing.com.kodilla.testing.shape.*;
+
 import java.util.Arrays;
-import java.util.List;
 
 public class TestingMain {
+    
+  public static void main(String[] args) {
 
-    public static void main(String[] args) {
+        ShapeCollector objShapeCollector = new ShapeCollector();
+        Shape circle1 = new Circle(2.0);
+        Shape square1 = new Square(5.0);
+        Shape tringle1 = new Triangle(5.0, 8.0);
+        objShapeCollector.addFigure(circle1);
+        objShapeCollector.addFigure(square1);
+        objShapeCollector.addFigure(tringle1);
+        objShapeCollector.removeFigure(circle1);
 
-      List<Integer> numbers = Arrays.asList(1,2,3,4,10,11,12,13,14);
-      OddNumbersExterminator packNumbers = new OddNumbersExterminator();
-      packNumbers.exterminate(numbers);
+        System.out.println(objShapeCollector.showFigures());
+        System.out.println(objShapeCollector.shapesListSize());
+
+  List<Integer> numbers = Arrays.asList(1,2,3,4,10,11,12,13,14);
+  OddNumbersExterminator packNumbers = new OddNumbersExterminator();
+  packNumbers.exterminate(numbers);
+    
     }
 }
+
