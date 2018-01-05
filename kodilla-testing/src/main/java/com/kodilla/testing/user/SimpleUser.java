@@ -8,8 +8,7 @@ public class SimpleUser {
         this.userName=userName;
     }
 
-    public String getUserName(){
-        return userName;
+      public String getUsername() {
+        return this.userName;
     }
-
 }
