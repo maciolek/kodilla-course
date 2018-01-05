@@ -5,7 +5,8 @@ import com.kodilla.testing.com.kodilla.testing.shape.*;
 import java.util.Arrays;
 
 public class TestingMain {
-    public static void main(String[] args) {
+    
+  public static void main(String[] args) {
 
         ShapeCollector objShapeCollector = new ShapeCollector();
         Shape circle1 = new Circle(2.0);
@@ -19,6 +20,10 @@ public class TestingMain {
         System.out.println(objShapeCollector.showFigures());
         System.out.println(objShapeCollector.shapesListSize());
 
+  List<Integer> numbers = Arrays.asList(1,2,3,4,10,11,12,13,14);
+  OddNumbersExterminator packNumbers = new OddNumbersExterminator();
+  packNumbers.exterminate(numbers);
+    
     }
 }
 
