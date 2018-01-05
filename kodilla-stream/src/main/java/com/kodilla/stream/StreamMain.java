@@ -1,15 +1,28 @@
+package com.kodilla.stream;
 
-import com.kodilla.stream.iterate.NumbersGenerator;
-import com.kodilla.stream.lambda.ExecuteSaySomething;
-import com.kodilla.stream.lambda.Executor;
-import com.kodilla.stream.lambda.ExpressionExecutor;
-import com.kodilla.stream.lambda.Processor;
-import com.kodilla.stream.reference.FunctionalCalculator;
-import com.sun.org.apache.xpath.internal.SourceTree;
+import java.time.*;
+import com.kodilla.stream.forumuser.Forum;
+import com.kodilla.stream.forumuser.ForumUser;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class StreamMain {
+
     public static void main(String[] args) {
-        System.out.println("Using Stream to generate even numbers from 1 to 20");
-        NumbersGenerator.generateEven(20);
+
+        Forum forumUserList = new Forum();
+
+        Map<Integer, ForumUser> listOfForumUser = forumUserList.getUserList().stream()
+                .filter(user -> user.getSex() == 'M')
+                .filter(user -> Period.between(user.getDateOfBirth(), LocalDate.now()).getYears() > 19)
+                .filter(user -> user.getNumberOfPosts() > 1)
+                .collect(Collectors.toMap(ForumUser::getUserID, user -> user));
+
+        System.out.println("Ilość elementów: " + listOfForumUser.size());
+        String showMap = listOfForumUser.entrySet().stream()
+                .map(entry -> entry.getKey().toString() + entry.getValue().toString())
+                .collect(Collectors.joining(",\n", "#", "#"));
+        System.out.println(showMap);
     }
 }
+
