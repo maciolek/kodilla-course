@@ -6,7 +6,7 @@ public class SearchFlight {
 
     private HashMap<String, Boolean> flightPlan = new HashMap<>();
 
-    public HashMap<String, Boolean> findFlight(Flight flight) {
+    public HashMap<String, Boolean> addFlight(Flight flight) {
 
         flightPlan.put(flight.getArrivalAirport(), true);
         flightPlan.put(flight.getDepartureAirport(), true);
@@ -16,7 +16,7 @@ public class SearchFlight {
     public void searchFlight(String searchingAirport) throws RouteNotFoundException {
 
         if (!flightPlan.containsKey(searchingAirport)) {
-            throw new RouteNotFoundException("Airport doesn't exist.");
+            throw new RouteNotFoundException(searchingAirport);
         }
         System.out.println("You can book this flight.");
     }
