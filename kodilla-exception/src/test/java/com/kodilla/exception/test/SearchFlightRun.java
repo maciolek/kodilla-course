@@ -19,5 +19,4 @@ public class SearchFlightRun {
             System.out.println("Exception \"" + ex + "\" was caught.");
         }
     }
-
 }
