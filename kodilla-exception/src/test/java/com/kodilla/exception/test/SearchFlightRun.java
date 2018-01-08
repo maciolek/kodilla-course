@@ -5,11 +5,11 @@ public class SearchFlightRun {
     public static void main(String[] args) {
 
         SearchFlight searchFlight = new SearchFlight();
-        searchFlight.findFlight(new Flight("Katowice", "Warszawa"));
-        searchFlight.findFlight(new Flight("Kraków", "Gdańsk"));
-        searchFlight.findFlight(new Flight("Rzeszów", "Warszawa"));
-        searchFlight.findFlight(new Flight("Katowice", "Oslo"));
-        searchFlight.findFlight(new Flight("Warszawa", "Chicago"));
+        searchFlight.addFlight(new Flight("Katowice", "Warszawa"));
+        searchFlight.addFlight(new Flight("Kraków", "Gdańsk"));
+        searchFlight.addFlight(new Flight("Rzeszów", "Warszawa"));
+        searchFlight.addFlight(new Flight("Katowice", "Oslo"));
+        searchFlight.addFlight(new Flight("Warszawa", "Chicago"));
 
         try {
             searchFlight.searchFlight("Cieszyn");
