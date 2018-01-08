@@ -16,7 +16,7 @@ public class SearchFlightRun {
 
         } catch (RouteNotFoundException ex) {
 
-            System.out.println("Exception \"" + ex + "\" was caught.");
+            System.out.println("Caught exception : " + ex);
         }
     }
 }
