@@ -4,7 +4,7 @@ import com.kodilla.exception.nullpointer.MessageNotSentException;
 
 public class RouteNotFoundException extends Exception {
 
-    RouteNotFoundException(final String message) {
-        super(message);
+    RouteNotFoundException(final String airport) {
+        super("Route to " + airport + " cannot be found.");
     }
 }
