@@ -1,6 +1,8 @@
 package com.kodilla.good.patterns.challenges;
 
+import java.time.LocalDate;
+
 public interface InformationService {
 
-    void sendMail();
+    void inform (User user, Product product, LocalDate dateOfSale);
 }
