@@ -1,21 +1,21 @@
 package com.kodilla.good.patterns.challenges.producers;
 
+import java.util.Objects;
+
 public class Producer implements ProducerProcess {
 
     private String nameOfProducer;
-    private String residenceAdress;
-    private AvailableProducts availableProducts;
+    private String residenceAddress;
 
-    public Producer(String nameOfProducer, String residenceAdress, AvailableProducts availableProducts) {
+    public Producer(String nameOfProducer, String residenceAddress) {
         this.nameOfProducer = nameOfProducer;
-        this.residenceAdress = residenceAdress;
-        this.availableProducts = availableProducts;
+        this.residenceAddress = residenceAddress;
     }
 
     @Override
-    public boolean process(User user, Product product) {
-        if (availableProducts.getListOfProduct().contains(product) && availableProducts.isAvailableProduct(product)) {
-            System.out.println("Zamówienie przyjęte do realizacji.");
+    public boolean process(User user, Product product, AvailableProducts availableProducts) {
+        if (availableProducts.isAvailableProduct(product)) {
+            System.out.println("Zamówienie w trakcie przetwarzania\n");
             return true;
         }
         return false;
@@ -25,12 +25,31 @@ public class Producer implements ProducerProcess {
         return nameOfProducer;
     }
 
-    public String getResidenceAdress() {
-        return residenceAdress;
+    public String getResidenceAddress() {
+        return residenceAddress;
     }
 
-    public AvailableProducts getAvailableProducts() {
-        return availableProducts;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Producer producer = (Producer) o;
+        return Objects.equals(nameOfProducer, producer.nameOfProducer) &&
+                Objects.equals(residenceAddress, producer.residenceAddress);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(nameOfProducer, residenceAddress);
+    }
+
+    @Override
+    public String toString() {
+        return "Nazwa producenta " + nameOfProducer +
+                " siedziba " + residenceAddress + "\n";
+
+
     }
 }
 

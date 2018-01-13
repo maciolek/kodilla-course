@@ -1,5 +1,7 @@
 package com.kodilla.good.patterns.challenges.producers;
 
+import java.util.Objects;
+
 public class Product {
 
     private String nameOfProduct;
@@ -24,4 +26,18 @@ public class Product {
         return quantity;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Product product = (Product) o;
+        return Double.compare(product.price, price) == 0 &&
+                quantity == product.quantity &&
+                Objects.equals(nameOfProduct, product.nameOfProduct);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nameOfProduct);
+    }
 }

@@ -5,14 +5,13 @@ import java.time.LocalDate;
 public class ProducerHealthyShop extends Producer {
 
 
-    public ProducerHealthyShop(String nameOfProducer, String residenceAdress, AvailableProducts availableProducts) {
-        super(nameOfProducer, residenceAdress, availableProducts);
+    public ProducerHealthyShop(String nameOfProducer, String residenceAdress) {
+        super(nameOfProducer, residenceAdress);
     }
 
     @Override
-    public boolean process(User user, Product product) {
-
-        return super.process(user, product);
+    public boolean process(User user, Product product, AvailableProducts availableProducts) {
+        return super.process(user, product, availableProducts);
     }
 
     @Override
@@ -21,13 +20,8 @@ public class ProducerHealthyShop extends Producer {
     }
 
     @Override
-    public String getResidenceAdress() {
-        return super.getResidenceAdress();
-    }
-
-    @Override
-    public AvailableProducts getAvailableProducts() {
-        return super.getAvailableProducts();
+    public String getResidenceAddress() {
+        return super.getResidenceAddress();
     }
 
     @Override
@@ -41,17 +35,7 @@ public class ProducerHealthyShop extends Producer {
     }
 
     @Override
-    protected Object clone() throws CloneNotSupportedException {
-        return super.clone();
-    }
-
-    @Override
     public String toString() {
         return super.toString();
-    }
-
-    @Override
-    protected void finalize() throws Throwable {
-        super.finalize();
     }
 }
