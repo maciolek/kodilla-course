@@ -1,17 +1,19 @@
-package com.kodilla.good.patterns.challenges.producers;
+package com.kodilla.good.patterns.challenges.foodproducers;
 
 import java.time.LocalDate;
 
-public class SaleRequest {
+public class Order {
 
     private User user;
     private LocalDate dateOfSale;
     private Product product;
+    private int volumeOfPurchase;
 
-    public SaleRequest(User user, LocalDate dateOfSale, Product product) {
+    public Order(User user, LocalDate dateOfSale, Product product, int volumeOfPurchase) {
         this.user = user;
         this.dateOfSale = dateOfSale;
         this.product = product;
+        this.volumeOfPurchase = volumeOfPurchase;
     }
 
     public User getUser() {
@@ -26,4 +28,7 @@ public class SaleRequest {
         return product;
     }
 
+    public int getVolumeOfPurchase() {
+        return volumeOfPurchase;
+    }
 }
