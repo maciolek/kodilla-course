@@ -4,8 +4,8 @@ public class Application {
 
     public static void main(String[] args) {
 
-        SaleRequestRetriever saleRequestRetriever = new SaleRequestRetriever();
-        Order order = saleRequestRetriever.retrieve();
+        OrderRetriever orderRetriever = new OrderRetriever();
+        Order order = orderRetriever.retrieve();
 
         Processor processor = new Processor(new EmailInformationService(),
                 new GameSaleService(), new DatebaseSaleRepository());

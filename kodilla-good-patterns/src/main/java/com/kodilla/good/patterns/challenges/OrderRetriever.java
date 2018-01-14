@@ -3,7 +3,7 @@ package com.kodilla.good.patterns.challenges;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-public class SaleRequestRetriever {
+public class OrderRetriever {
 
     public Order retrieve() {
 
