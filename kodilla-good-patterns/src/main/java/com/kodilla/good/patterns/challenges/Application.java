@@ -5,10 +5,10 @@ public class Application {
     public static void main(String[] args) {
 
         SaleRequestRetriever saleRequestRetriever = new SaleRequestRetriever();
-        SaleRequest saleRequest = saleRequestRetriever.retrieve();
+        Order order = saleRequestRetriever.retrieve();
 
-        ProductOrderService productOrderService = new ProductOrderService(new EmailInformationService(),
-                new GameSaleService(), new GameSaleRepository());
-        productOrderService.process(saleRequest);
+        Processor processor = new Processor(new EmailInformationService(),
+                new GameSaleService(), new DatebaseSaleRepository());
+        processor.process(order);
     }
 }

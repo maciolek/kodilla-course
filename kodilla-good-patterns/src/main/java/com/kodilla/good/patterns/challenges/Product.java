@@ -1,20 +1,22 @@
 package com.kodilla.good.patterns.challenges;
 
+import java.math.BigDecimal;
+
 public class Product {
 
-    private String nameOfProduct;
-    private double priceOfProduct;
+    private String name;
+    private BigDecimal price;
 
-    public Product(String nameOfProduct, double priceOfProduct) {
-        this.nameOfProduct = nameOfProduct;
-        this.priceOfProduct = priceOfProduct;
+    public Product(String name, BigDecimal price) {
+        this.name = name;
+        this.price = price;
     }
 
     public String getNameOfProduct() {
-        return nameOfProduct;
+        return name;
     }
 
-    public double getPriceOfProduct() {
-        return priceOfProduct;
+    public BigDecimal getPriceOfProduct() {
+        return price;
     }
 }
