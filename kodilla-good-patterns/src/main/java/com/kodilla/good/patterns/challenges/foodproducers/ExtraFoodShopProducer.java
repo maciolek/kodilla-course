@@ -1,8 +1,6 @@
 package com.kodilla.good.patterns.challenges.foodproducers;
 
-import java.util.Objects;
-
-public class ExtraFoodShopProducer implements SaleProcess {
+public class ExtraFoodShopProducer implements ProducerProcess {
 
     private String name;
     private String residenceAddress;
@@ -13,12 +11,14 @@ public class ExtraFoodShopProducer implements SaleProcess {
     }
 
     @Override
-    public boolean process(User user, Product product, AvailableProducts availableProducts) {
-        if (availableProducts.isAvailableProduct(product)) {
+    public boolean process(User user, Product product, StoreService storeService) {
+        if (storeService.isAvailableProduct(product)) {
             System.out.println("Zamówienie w trakcie przetwarzania\n");
+            System.out.println("Zachęcamy do skorzystania z naszych promocji!");
             return true;
         } else {
             System.out.println("Zamówienie nie może zostać z realizowane");
+
         }
         return false;
     }

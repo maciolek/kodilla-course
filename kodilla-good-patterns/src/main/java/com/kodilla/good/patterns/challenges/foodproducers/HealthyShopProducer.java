@@ -1,8 +1,6 @@
 package com.kodilla.good.patterns.challenges.foodproducers;
 
-import java.util.Objects;
-
-public class HealthyShopProducer implements SaleProcess {
+public class HealthyShopProducer implements ProducerProcess {
 
     private String name;
     private String residenceAddress;
@@ -13,8 +11,8 @@ public class HealthyShopProducer implements SaleProcess {
     }
 
     @Override
-    public boolean process(User user, Product product, AvailableProducts availableProducts) {
-        if (availableProducts.isAvailableProduct(product)) {
+    public boolean process(User user, Product product, StoreService storeService) {
+        if (storeService.isAvailableProduct(product)) {
             System.out.println("Zamówienie w trakcie przetwarzania\n");
             return true;
         }

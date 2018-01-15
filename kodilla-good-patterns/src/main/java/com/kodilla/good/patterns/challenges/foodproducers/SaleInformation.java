@@ -4,5 +4,5 @@ import java.time.LocalDate;
 
 public interface SaleInformation {
 
-    void inform (Order order, boolean IsSold);
+    void inform(Order order, boolean IsSold);
 }

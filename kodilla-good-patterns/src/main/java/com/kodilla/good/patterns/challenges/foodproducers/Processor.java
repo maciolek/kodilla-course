@@ -3,25 +3,26 @@ package com.kodilla.good.patterns.challenges.foodproducers;
 public class Processor {
 
     private SaleInformation saleInformation;
-    private SaleProcess saleProcess;
-    private AvailableProducts availableProducts;
+    private ProducerProcess producerProcess;
+    private StoreService storeService;
 
-    public Processor(SaleInformation saleInformation, SaleProcess saleProcess, AvailableProducts availableProducts) {
+    public Processor(SaleInformation saleInformation, ProducerProcess producerProcess, StoreService storeService) {
 
         this.saleInformation = saleInformation;
-        this.saleProcess = saleProcess;
-        this.availableProducts = availableProducts;
+        this.producerProcess = producerProcess;
+        this.storeService = storeService;
     }
 
     public boolean process(Order order) {
-        boolean isSold = saleProcess.process(order.getUser(), order.getProduct(),availableProducts);
-        System.out.println("isAvailable " + isSold);
+
+        storeService.showAllAvailableProduct();
+        boolean isSold = producerProcess.process(order.getUser(), order.getProduct(), storeService);
         saleInformation.inform(order, isSold);
+
         if (isSold) {
-//          availableProducts.showAllAvailableProduct(order.getProduct());
-            availableProducts.SetQuantityAfterSale(order.getProduct(),order.getVolumeOfPurchase());
+            storeService.SetQuantityAfterSale(order.getProduct(),order.getVolumeOfPurchase());
         } else {
-            System.out.println("Zamówienie nie może zostać zrealizowane");
+            System.out.println("Zamówienie nie może zostać zrealizowane.");
         }
         return false;
     }
