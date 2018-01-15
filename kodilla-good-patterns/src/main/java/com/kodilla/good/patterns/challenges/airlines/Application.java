@@ -1,4 +1,4 @@
-package com.kodilla.good.patterns.challenges.foodproducers.com.kodilla.good.patterns.challenges.airlines;
+package com.kodilla.good.patterns.challenges.airlines;
 
 public class Application {
 
