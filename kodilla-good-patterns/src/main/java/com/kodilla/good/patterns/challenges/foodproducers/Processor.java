@@ -10,25 +10,27 @@ public class Processor {
 
         this.saleInformation = saleInformation;
         this.producerProcess = producerProcess;
-        this.registerProducers= registerProducers;
+        this.registerProducers = registerProducers;
     }
 
     public boolean process(Order order) {
- //       registerProducers.showAllAvailableProduct();
-        boolean isSold = producerProcess.process(order.getProduct(),order.getVolumeOfPurchase());
-        saleInformation.inform(order, isSold);
 
-        if (isSold) {
-    //        storeHouse.SetQuantityAfterSale(order.getProduct(),order.getVolumeOfPurchase());
+        registerProducers.showAllAvailableProducts();
+
+        boolean isAvailable = registerProducers.isAvailableProduct(order.getProduct(),order.getVolumeOfPurchase());
+        producerProcess.process(order.getProduct(), order.getVolumeOfPurchase());
+        saleInformation.inform(order, isAvailable);
+
+        if (isAvailable) {
+            order.getProduct().setQuantity(order.getProduct().getQuantity() - order.getVolumeOfPurchase());
         } else {
             System.out.println("Zamówienie nie może zostać zrealizowane.");
         }
-        System.out.println(order.getProduct().getQuantity());
-        System.out.println(registerProducers.getRegisterProducers().get(order.getProduct()).getListOfProducts().indexOf(order.getProduct()));
+
         return false;
     }
 
-    }
+}
 
 
 

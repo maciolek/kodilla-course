@@ -2,7 +2,7 @@ package com.kodilla.good.patterns.challenges.foodproducers;
 
 import java.util.*;
 
-public class AvailableProducts {
+public class RegistrerProducts {
 
     private List<Product> listOfProducts = new ArrayList<Product>();
 
@@ -19,20 +19,11 @@ public class AvailableProducts {
         return listOfProducts;
     }
 
-    public boolean isAvailableProduct(Product product) {
-        if (listOfProducts.contains(product)) {
-        } else {
-            return false;
-        }
-        return true;
-    }
-
     public Product getProductFromListOfProducts(Product product) {
         return listOfProducts.get(listOfProducts.indexOf(product));
     }
 
     public boolean SetQuantityAfterSale(Product product, int salesVolume) {
-
         int currentQuantity = getProductFromListOfProducts(product).getQuantity();
         if (currentQuantity >= salesVolume) {
             getProductFromListOfProducts(product).setQuantity(currentQuantity - salesVolume);
@@ -43,14 +34,14 @@ public class AvailableProducts {
         return false;
     }
 
-    public void showAllAvailableProduct() {
-        for (Product currentProduct : listOfProducts)
-            if (isAvailableProduct(currentProduct)) {
-                System.out.print("Nazwa produktu: " + currentProduct.getName());
-//                System.out.print("Producent: " + currentProduct.getNameOfProducer());
-                System.out.println(" Ilość na magazynie: " + currentProduct.getQuantity());
-            } else {
-                System.out.println("Brak produktów w magazynie.");
-            }
-    }
+//    public void showAllAvailableProduct() {
+//        for (Product currentProduct : listOfProducts)
+//            if (isAvailableProduct(currentProduct)) {
+//                System.out.print("Nazwa produktu: " + currentProduct.getName());
+////                System.out.print("Producent: " + currentProduct.getNameOfProducer());
+//                System.out.println(" Ilość na magazynie: " + currentProduct.getQuantity());
+//            } else {
+//                System.out.println("Brak produktów w magazynie.");
+//            }
+//    }
 }

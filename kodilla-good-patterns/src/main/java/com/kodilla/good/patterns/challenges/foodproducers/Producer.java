@@ -12,11 +12,9 @@ public class Producer implements ProducerProcess{
         this.residenceAddress = residenceAddress;
     }
     @Override
-    public boolean process(Product product, int volumeOfPurchase) {
-        ;
-        product.setQuantity(222);
-         return true;
-    }
+    public void process(Product product, int volumeOfPurchase) {
+        System.out.println("\nInformacja od producenta: ");
+        }
 
     public String getName() {
         return name;

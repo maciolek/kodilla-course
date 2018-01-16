@@ -6,10 +6,13 @@ public class GlutenFreeShop extends Producer implements ProducerProcess {
         super(name, residenceAddress);
     }
 
-    @Override
-    public boolean process(Product product, int volumeOfPurchase) {
-        return super.process(product, volumeOfPurchase);
+
+    public void process(Product product, int volumeOfPurchase) {
+        super.process(product, volumeOfPurchase);
+        System.out.println("Towar: " + product.getName() + " jest przygotowywany do wysyłki");
     }
+
+
 
     @Override
     public String getName() {

@@ -7,8 +7,9 @@ public class ExtraFoodShopProducer extends Producer implements ProducerProcess {
     }
 
     @Override
-    public boolean process(Product product, int volumeOfPurchase) {
-        return super.process(product, volumeOfPurchase);
+    public void process(Product product, int volumeOfPurchase) {
+        System.out.print("\nTowar: " + product.getName() + " jest przygotowywany do wysyłki");
+        System.out.print("Ilość dostepnych sztuk: " + product.getQuantity());
     }
 
     @Override
