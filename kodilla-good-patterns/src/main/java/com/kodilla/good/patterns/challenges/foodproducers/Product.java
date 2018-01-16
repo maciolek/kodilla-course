@@ -27,15 +27,17 @@ public class Product {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    public void setQuantityAfterSale(int volumeOfPurchase) {
+        this.quantity = quantity-volumeOfPurchase;
     }
 
     @Override
     public String toString() {
         return "Nazwa produktu " + name +
                 ", cena " + price +
-                ", ilość " + quantity ;
-            }
+                ", ilość " + quantity;
+    }
+
+
 }
 

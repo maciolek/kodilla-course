@@ -2,6 +2,7 @@ package com.kodilla.good.patterns.challenges.foodproducers;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class RegisterProducers {
 
@@ -9,10 +10,6 @@ public class RegisterProducers {
 
     public void addNewProducer(ProducerProcess producer, RegistrerProducts registrerProducts) {
         registerProducers.put(producer, registrerProducts);
-    }
-
-    public Map<ProducerProcess, RegistrerProducts> getRegisterProducers() {
-        return registerProducers;
     }
 
     public void showAllAvailableProducts() {
@@ -29,13 +26,23 @@ public class RegisterProducers {
         for (Map.Entry<ProducerProcess, RegistrerProducts> current : registerProducers.entrySet()) {
             for (Product currentProduct : current.getValue().getListOfProducts()) {
                 if (currentProduct.equals(product) && currentProduct.getQuantity() > volumeOfPurchase) {
+                    product.setQuantityAfterSale(volumeOfPurchase);
                     return true;
                 }
             }
         }
         return false;
     }
+
+    public ProducerProcess getProducerOfSpecyficProduct(Product product) {
+        for (Map.Entry<ProducerProcess, RegistrerProducts> current : registerProducers.entrySet()) {
+            for (Product currentProduct : current.getValue().getListOfProducts()) {
+                if (currentProduct.equals(product)) {
+                    return current.getKey();
+                }
+            }
+        }
+        return null;
+    }
 }
-
-
 

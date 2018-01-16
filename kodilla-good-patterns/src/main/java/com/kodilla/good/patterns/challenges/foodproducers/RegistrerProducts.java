@@ -15,6 +15,7 @@ public class RegistrerProducts {
             return true;
         }
     }
+
     public List<Product> getListOfProducts() {
         return listOfProducts;
     }
@@ -22,26 +23,4 @@ public class RegistrerProducts {
     public Product getProductFromListOfProducts(Product product) {
         return listOfProducts.get(listOfProducts.indexOf(product));
     }
-
-    public boolean SetQuantityAfterSale(Product product, int salesVolume) {
-        int currentQuantity = getProductFromListOfProducts(product).getQuantity();
-        if (currentQuantity >= salesVolume) {
-            getProductFromListOfProducts(product).setQuantity(currentQuantity - salesVolume);
-            return true;
-        } else {
-            System.out.println("Sprzedaż niemożliwa, nie ma tyle towaru.");
-        }
-        return false;
-    }
-
-//    public void showAllAvailableProduct() {
-//        for (Product currentProduct : listOfProducts)
-//            if (isAvailableProduct(currentProduct)) {
-//                System.out.print("Nazwa produktu: " + currentProduct.getName());
-////                System.out.print("Producent: " + currentProduct.getNameOfProducer());
-//                System.out.println(" Ilość na magazynie: " + currentProduct.getQuantity());
-//            } else {
-//                System.out.println("Brak produktów w magazynie.");
-//            }
-//    }
 }

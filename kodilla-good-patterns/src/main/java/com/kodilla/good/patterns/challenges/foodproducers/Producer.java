@@ -2,7 +2,7 @@ package com.kodilla.good.patterns.challenges.foodproducers;
 
 import java.util.Objects;
 
-public class Producer implements ProducerProcess{
+public abstract class Producer implements ProducerProcess{
 
     private String name;
     private String residenceAddress;
