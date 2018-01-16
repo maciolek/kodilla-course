@@ -1,6 +1,5 @@
 package com.kodilla.good.patterns.challenges.foodproducers;
 
-import java.time.LocalDate;
 
 public class MailInformation implements SaleInformation {
 
@@ -10,7 +9,7 @@ public class MailInformation implements SaleInformation {
             System.out.println("Użytkowniku " + order.getUser().getFirstName() + " " + order.getUser().getSurname()
                     + " twoje zamówienie jest w trakcie kompletowania");
             System.out.println("Zamówione produkty: " + order.getProduct().getName() + " cena: " + order.getProduct().getPrice() + "zł");
-            System.out.println("Producent: " + order.getProduct().getNameOfProducer());
+//            System.out.println("Producent: " + order.getProduct().getNameOfProducer());
             System.out.println("Ilość: " + order.getVolumeOfPurchase());
             System.out.println("Adres do wysyłki: " + order.getUser().getAdress());
             System.out.println("Wiadomość została wygenerowana automatycznie na adres: " + order.getUser().getEmail());

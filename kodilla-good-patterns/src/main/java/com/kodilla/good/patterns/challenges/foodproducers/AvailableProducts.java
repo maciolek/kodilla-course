@@ -2,11 +2,11 @@ package com.kodilla.good.patterns.challenges.foodproducers;
 
 import java.util.*;
 
-public class StoreService {
+public class AvailableProducts {
 
     private List<Product> listOfProducts = new ArrayList<Product>();
 
-    public boolean addProduct(Product product) {
+    public boolean addNewProduct(Product product) {
         if (listOfProducts.contains(product)) {
             System.out.println("Błąd, produkt tego producenta już znajduje się na liście.");
             return false;
@@ -15,7 +15,6 @@ public class StoreService {
             return true;
         }
     }
-
     public List<Product> getListOfProducts() {
         return listOfProducts;
     }
@@ -48,7 +47,7 @@ public class StoreService {
         for (Product currentProduct : listOfProducts)
             if (isAvailableProduct(currentProduct)) {
                 System.out.print("Nazwa produktu: " + currentProduct.getName());
-                System.out.print("Producent: " + currentProduct.getNameOfProducer());
+//                System.out.print("Producent: " + currentProduct.getNameOfProducer());
                 System.out.println(" Ilość na magazynie: " + currentProduct.getQuantity());
             } else {
                 System.out.println("Brak produktów w magazynie.");

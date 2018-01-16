@@ -1,8 +1,8 @@
 package com.kodilla.good.patterns.challenges.foodproducers;
 
-public class ExtraFoodShopProducer extends Producer implements ProducerProcess {
+public class GlutenFreeShop extends Producer implements ProducerProcess {
 
-    public ExtraFoodShopProducer(String name, String residenceAddress) {
+    public GlutenFreeShop(String name, String residenceAddress) {
         super(name, residenceAddress);
     }
 
@@ -36,5 +36,3 @@ public class ExtraFoodShopProducer extends Producer implements ProducerProcess {
         return super.hashCode();
     }
 }
-
-

@@ -8,13 +8,11 @@ public class Product {
     private String name;
     private BigDecimal price;
     private int quantity;
-    private String nameOfProducer;
 
-    public Product(String name, BigDecimal price, int quantity, String nameOfProducer) {
+    public Product(String name, double price, int quantity) {
         this.name = name;
-        this.price = price;
+        this.price = BigDecimal.valueOf(price);
         this.quantity = quantity;
-        this.nameOfProducer = nameOfProducer;
     }
 
     public String getName() {
@@ -29,12 +27,15 @@ public class Product {
         return quantity;
     }
 
-    public String getNameOfProducer() {
-        return nameOfProducer;
-    }
-
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
 
+    @Override
+    public String toString() {
+        return "Nazwa produktu " + name +
+                ", cena " + price +
+                ", ilość " + quantity ;
+            }
 }
+
