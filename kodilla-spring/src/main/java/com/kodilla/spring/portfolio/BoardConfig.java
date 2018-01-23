@@ -11,20 +11,20 @@ public class BoardConfig {
 
     @Autowired
     @Qualifier("taskToDoList")
-    TaskList taskList;
+    TaskList toDoList;
 
     @Autowired
     @Qualifier("taskInProgressList")
     TaskList inProgressList;
-//
-//    @Autowired
-//    @Qualifier("taskDoneList")
-//    TaskList taskList;
+
+    @Autowired
+    @Qualifier("taskDoneList")
+    TaskList doneList;
 
     @Bean
     @Scope("prototype")
-    public Board getBoard (){
-        return new Board();
+    public Board getBoard() {
+        return new Board(toDoList,inProgressList,doneList);
     }
 
     @Bean(name = "taskToDoList")
