@@ -8,18 +8,18 @@ public class LoggerTestSuite {
     @Test
     public void testGetLastLog() {
         //given
-        Logger.getInstance().log("Pierwsze logowanie");
+        Logger.INSTANCE.log("Pierwsze logowanie");
         //when
-        String actualLog = Logger.getInstance().getLastLog();
+        String actualLog = Logger.INSTANCE.getLastLog();
         Assert.assertEquals("Pierwsze logowanie", actualLog);
     }
 
     @Test
     public void testGetInstanceOnlyOnce() {
         //given
-        Logger excpectedInstance = Logger.getInstance();
+        Logger excpectedInstance = Logger.INSTANCE;
         //when
-        Logger actualInstance = Logger.getInstance();
+        Logger actualInstance = Logger.INSTANCE;
         Assert.assertTrue(excpectedInstance == actualInstance);
     }
 }
