@@ -41,10 +41,8 @@ public class LibraryTestSuite {
         library.getBooks().remove(book5);
 
         //then
-        System.out.println(library);
-        System.out.println(clonedShallowCopyLibrary);
-        System.out.println(clonedDeepCopyLibrary);
-
+        Assert.assertEquals("Biblioteka publiczna nr 2 - ul. Płytka", clonedShallowCopyLibrary.getName());
+        Assert.assertEquals("Biblioteka publiczna nr 3 - ul. Głęboka", clonedDeepCopyLibrary.getName());
         Assert.assertEquals(4,library.getBooks().size());
         Assert.assertEquals(4,clonedShallowCopyLibrary.getBooks().size());
         Assert.assertEquals(5,clonedDeepCopyLibrary.getBooks().size());

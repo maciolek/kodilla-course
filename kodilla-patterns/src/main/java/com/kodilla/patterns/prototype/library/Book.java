@@ -1,13 +1,15 @@
 package com.kodilla.patterns.prototype.library;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 public final class Book {
-    String title;
-    String author;
-    LocalDate publicationDate;
 
-    public Book(String title, String author, LocalDate publicationDate) {
+    private final String title;
+    private final String author;
+    private final LocalDate publicationDate;
+
+    public Book(final String title, final String author, final LocalDate publicationDate) {
         this.title = title;
         this.author = author;
         this.publicationDate = publicationDate;
@@ -28,5 +30,11 @@ public final class Book {
     @Override
     public String toString() {
         return "  Autor: " + author + " ,Tytuł: " + title + " , data wydania: " + publicationDate;
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(title, author, publicationDate);
     }
 }
