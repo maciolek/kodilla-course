@@ -15,7 +15,7 @@ public class DrivingTask implements Task {
 
     @Override
     public void executeTask() {
-        if (isDone == false) {
+        if (!isDone) {
             System.out.println("Zadanie " + taskName + " przyjęte do realizacji");
             isDone = true;
         }

@@ -12,7 +12,7 @@ public class TaskFactoryTestSuite {
         TaskFactory taskFactory = new TaskFactory();
 
         //when
-        Task drivingTask = taskFactory.generateTask("DRIVINGTASK");
+        Task drivingTask = taskFactory.generateTask(TaskFactory.DRIVING_TASK);
         boolean expectedIsTaskDoneBeforeExecuteTask = drivingTask.isTaskExecuted();
         drivingTask.executeTask();
         boolean expectedIsTaskDone = drivingTask.isTaskExecuted();
@@ -30,7 +30,7 @@ public class TaskFactoryTestSuite {
         TaskFactory taskFactory = new TaskFactory();
 
         //when
-        Task shoppingTask = taskFactory.generateTask("SHOPPINGTASK");
+        Task shoppingTask = taskFactory.generateTask(TaskFactory.SHOPPING_TASK);
         boolean expectedIsTaskDoneBeforeExecuteTask = shoppingTask.isTaskExecuted();
         shoppingTask.executeTask();
         boolean expectedIsTaskDone = shoppingTask.isTaskExecuted();
@@ -48,7 +48,7 @@ public class TaskFactoryTestSuite {
         TaskFactory taskFactory = new TaskFactory();
 
         //when
-        Task paintingTask = taskFactory.generateTask("PAINTNGTASK");
+        Task paintingTask = taskFactory.generateTask(TaskFactory.PAINTING_TASK);
         boolean expectedIsTaskDoneBeforeExecuteTask = paintingTask.isTaskExecuted();
         paintingTask.executeTask();
         boolean expectedIsTaskDone = paintingTask.isTaskExecuted();

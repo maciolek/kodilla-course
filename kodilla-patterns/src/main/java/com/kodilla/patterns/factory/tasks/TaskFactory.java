@@ -17,7 +17,7 @@ public class TaskFactory {
             case PAINTING_TASK:
                 return new PaintingTask("Malowanie", "niebieski", "sciany sypialni");
             default:
-                return null;
+                throw new IllegalArgumentException("Choosen name of task is wrong!");
         }
     }
 }
