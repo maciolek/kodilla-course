@@ -2,7 +2,9 @@ package com.kodilla.patterns.prototype.library;
 
 import org.junit.Assert;
 import org.junit.Test;
+
 import java.time.LocalDate;
+
 public class LibraryTestSuite {
 
     @Test
@@ -27,7 +29,7 @@ public class LibraryTestSuite {
             clonedShallowCopyLibrary = library.shallowCopy();
             clonedShallowCopyLibrary.setName("Biblioteka publiczna nr 2 - ul. Płytka");
         } catch (CloneNotSupportedException ex) {
-            System.out.println(ex);
+            Assert.fail();
         }
 
         Library clonedDeepCopyLibrary = null;
@@ -35,7 +37,7 @@ public class LibraryTestSuite {
             clonedDeepCopyLibrary = library.deepCopy();
             clonedDeepCopyLibrary.setName("Biblioteka publiczna nr 3 - ul. Głęboka");
         } catch (CloneNotSupportedException ex) {
-            System.out.println(ex);
+            Assert.fail();
         }
 
         library.getBooks().remove(book5);
@@ -43,9 +45,9 @@ public class LibraryTestSuite {
         //then
         Assert.assertEquals("Biblioteka publiczna nr 2 - ul. Płytka", clonedShallowCopyLibrary.getName());
         Assert.assertEquals("Biblioteka publiczna nr 3 - ul. Głęboka", clonedDeepCopyLibrary.getName());
-        Assert.assertEquals(4,library.getBooks().size());
-        Assert.assertEquals(4,clonedShallowCopyLibrary.getBooks().size());
-        Assert.assertEquals(5,clonedDeepCopyLibrary.getBooks().size());
+        Assert.assertEquals(4, library.getBooks().size());
+        Assert.assertEquals(4, clonedShallowCopyLibrary.getBooks().size());
+        Assert.assertEquals(5, clonedDeepCopyLibrary.getBooks().size());
     }
 }
 
