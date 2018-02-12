@@ -1,7 +1,5 @@
 package com.kodilla.hibernate.tasklist;
 
-import com.sun.javafx.beans.IDProperty;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
