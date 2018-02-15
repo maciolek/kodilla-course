@@ -6,11 +6,13 @@ import com.kodilla.hibernate.invoice.Dao.Dao.ProductDao;
 import com.kodilla.hibernate.invoice.Dao.Invoice;
 import com.kodilla.hibernate.invoice.Dao.Item;
 import com.kodilla.hibernate.invoice.Dao.Product;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+
 import java.math.BigDecimal;
 
 
@@ -62,11 +64,13 @@ public class InvoiceDaoTestSuite {
         int numberOfItems = invoice.getItems().size();
         int id = invoice.getId();
         Invoice readInvoice = invoiceDao.findOne(id);
+        int numberOfItemOnInvoce = readInvoice.getItems().size();
 
         //then
-//        Assert.assertEquals(MILK, actualNameOFProduct1);
-//        Assert.assertNotEquals(0, product1Id);
-//        Assert.assertEquals(3, numberOfItems);
-//        Assert.assertEquals(id, readInvoice.getId());
+        Assert.assertEquals(MILK, actualNameOFProduct1);
+        Assert.assertNotEquals(0, product1Id);
+        Assert.assertEquals(3, numberOfItems);
+        Assert.assertEquals(id, readInvoice.getId());
+        Assert.assertEquals(3, numberOfItemOnInvoce);
     }
 }
