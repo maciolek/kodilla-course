@@ -94,20 +94,16 @@ public class CompanyDaoTestSuite {
         companyDao.save(dataMaesters);
         companyDao.save(greyMatter);
 
-       List<Employee> listSmiths = employeeDao.findByLastName("Smith");
-       int numberOfSmiths = listSmiths.size();
+        List<Employee> listSmiths = employeeDao.findByLastName("Smith");
+        int numberOfSmiths = listSmiths.size();
 
-       //then
-        Assert.assertEquals(1,numberOfSmiths);
+        //then
+        Assert.assertEquals(1, numberOfSmiths);
 
         //CleanUp
-        try {
-            companyDao.delete(softwareMachine);
-            companyDao.delete(dataMaesters);
-            companyDao.delete(greyMatter);
-        } catch (Exception e) {
-            //do nothing
-        }
+        companyDao.delete(softwareMachine);
+        companyDao.delete(dataMaesters);
+        companyDao.delete(greyMatter);
     }
 
     @Test
