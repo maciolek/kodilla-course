@@ -5,11 +5,20 @@ import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-@NamedNativeQuery(
-        name="Company.findNameOfCompanyByFirstThreeLetters",
-        query = "SELECT * FROM companies WHERE substring(company_name,1,3) = :FIRSTTHREELETTERSOFNAMECOMPANY",
-        resultClass = Company.class
+@NamedNativeQueries(value = {
+        @NamedNativeQuery(
+                name = "Company.findNameOfCompanyByFirstThreeLetters",
+                query = "SELECT * FROM companies WHERE substring(company_name,1,3) = :FIRSTTHREELETTERSOFNAMECOMPANY",
+                resultClass = Company.class),
+
+        @NamedNativeQuery(
+                name = "Company.findNameOfCompanyByAnyPartOfName",
+                query = "SELECT * FROM companies WHERE company_name LIKE :ANYPARTOFNAMECOMPANY",
+                resultClass = Company.class)
+}
 )
+
+
 @Entity
 @Table(name = "COMPANIES")
 public class Company {
@@ -32,10 +41,18 @@ public class Company {
         return id;
     }
 
+    private void setId(int id) {
+        this.id = id;
+    }
+
     @NotNull
     @Column(name = "COMPANY_NAME")
     public String getName() {
         return name;
+    }
+
+    private void setName(String name) {
+        this.name = name;
     }
 
     @ManyToMany(cascade = CascadeType.ALL, mappedBy = "companies")
@@ -45,13 +62,5 @@ public class Company {
 
     public void setEmployees(List<Employee> employees) {
         this.employees = employees;
-    }
-
-    private void setId(int id) {
-        this.id = id;
-    }
-
-    private void setName(String name) {
-        this.name = name;
     }
 }
