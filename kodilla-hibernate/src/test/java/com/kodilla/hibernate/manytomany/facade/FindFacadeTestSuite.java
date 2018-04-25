@@ -18,7 +18,7 @@ import java.util.List;
 @Transactional
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class FindFacadeTestSuit {
+public class FindFacadeTestSuite {
     private static String LASTNAME1 = "Kowalski";
     private static String LASTNAME2 = "Nowak";
     private static String COMPANY1 = "Microsoft";
