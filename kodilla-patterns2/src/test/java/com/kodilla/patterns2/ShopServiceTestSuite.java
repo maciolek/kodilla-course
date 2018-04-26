@@ -4,7 +4,6 @@ import com.kodilla.patterns2.facade.API.ItemDto;
 import com.kodilla.patterns2.facade.API.OrderDto;
 import com.kodilla.patterns2.facade.API.OrderFacade;
 import com.kodilla.patterns2.facade.API.OrderProcessingException;
-import com.kodilla.patterns2.facade.Item;
 import com.kodilla.patterns2.facade.ShopService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -78,6 +77,5 @@ public class ShopServiceTestSuite {
             } catch (OrderProcessingException ex){
             //obsługa ex
         }
-
     }
 }
