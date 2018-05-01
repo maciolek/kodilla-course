@@ -22,9 +22,9 @@ public class HomeworkTestSuite {
         sebastianPol.registerMentor(adamMentor);
 
         //when
-        Task task1 = new Task("Try, catch, finnaly");
-        Task task2 = new Task("Spring AOP");
-        Task task3 = new Task("Built facade pattern");
+        Task task1 = new Task("Try, catch, finnaly",1);
+        Task task2 = new Task("Spring AOP",2);
+        Task task3 = new Task("Built facade pattern",3);
         janKowalski.addTask(task1);
         marekBrzeczyszczykiewicz.addTask(task1);
         marekBrzeczyszczykiewicz.addTask(task2);

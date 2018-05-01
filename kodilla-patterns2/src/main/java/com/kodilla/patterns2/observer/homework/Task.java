@@ -6,9 +6,15 @@ public class Task {
 
     private final String name;
     private final LocalDateTime dateTime;
+    private final int number;
 
-    public Task(String name) {
+    public Task(String name, int number) {
         this.name = name;
         this.dateTime = LocalDateTime.now();
+        this.number = number;
+    }
+
+    public int getNumber() {
+        return number;
     }
 }

@@ -8,7 +8,7 @@ import java.util.Queue;
 public class Student implements Observable {
 
     private final String name;
-    private final Queue<Task> tasksQueue;
+    private final ArrayDeque<Task> tasksQueue;
     private final List<Mentor> mentors;
 
     public Student(String name) {
@@ -43,7 +43,7 @@ public class Student implements Observable {
         return name;
     }
 
-    public Queue<Task> getTasksQueue() {
+    public ArrayDeque<Task> getTasksQueue() {
         return tasksQueue;
     }
 

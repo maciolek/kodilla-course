@@ -14,6 +14,7 @@ public class Mentor implements Observer {
         System.out.println(name + "! Today is red-letter day! - " + "Tasks are waiting for you in the queue." +
                 " Student " + student.getName() + " has "+ student.getTasksQueue().size() +
                 " tasks to check");
+        System.out.println("Number of task to check: " + student.getTasksQueue().getLast().getNumber());
         System.out.println("By all means you have to check all of them immediately! :-)\n");
         updateCount++;
     }
