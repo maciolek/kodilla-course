@@ -1,21 +1,25 @@
 package com.kodilla.patterns2.facade.API;
 
 import com.kodilla.patterns2.facade.ShopService;
+import org.aspectj.lang.annotation.Aspect;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 
 @Service
+@EnableAspectJAutoProxy
 public class OrderFacade {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(OrderFacade.class);
     @Autowired
     private ShopService shopService;
 
-    public void processingOrder(final OrderDto order, final Long userID) throws OrderProcessingException {
+    public void processingOrder(OrderDto order, Long userID) throws OrderProcessingException {
 
         boolean wasError = false;
         long orderId = shopService.openOrder(userID);
