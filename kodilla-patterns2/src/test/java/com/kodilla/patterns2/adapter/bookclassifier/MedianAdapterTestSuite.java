@@ -15,7 +15,7 @@ public class MedianAdapterTestSuite {
         //given
         Set<Book> bookSet = new HashSet<>();
         MedianAdapter medianAdapter = new MedianAdapter();
-        bookSet.add(new Book("John Grisham", "The firm", 1991, "1001"));
+        bookSet.add(new Book("John Grisham", "The Firm", 1991, "1001"));
         bookSet.add(new Book("John Grisham", "The Pelican Brief", 1992, "1002"));
         bookSet.add(new Book("George R.R. Martin", "A Game of Thrones", 1996, "1003"));
         bookSet.add(new Book("George R.R. Martin", "A Clash of Kings", 1999, "1004"));
