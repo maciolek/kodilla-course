@@ -2,7 +2,7 @@ package com.kodilla.patterns2.adapter.extratask;
 
 import java.util.Comparator;
 
-public class BookComparators{
+public class BookComparators {
 
     public static final Comparator<Book> TITLE = (Book b1, Book b2) -> b1.getTitle().compareTo(b2.getTitle());
     public static final Comparator<Book> AUTHOR = (Book b1, Book b2) -> b1.getAuthor().compareTo(b2.getAuthor());

@@ -35,8 +35,5 @@ public class Book {
                 ", yearOfPublication=" + yearOfPublication +
                 "\n";
     }
-//    public int compareTo(int i) {
-//        return i;
-//    }
 
 }

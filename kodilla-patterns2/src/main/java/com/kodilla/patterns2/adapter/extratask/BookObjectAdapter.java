@@ -1,19 +1,23 @@
 package com.kodilla.patterns2.adapter.extratask;
 
-public class BookObjectAdapter implements Comparable<Book> {
+import java.util.Comparator;
 
-   Book book;
+public class BookObjectAdapter implements Comparable<BookObjectAdapter> {
 
-    public BookObjectAdapter(Book book) {
+    private final Book book;
+
+    public BookObjectAdapter(final Book book) {
         this.book = book;
     }
-
     @Override
-    public int compareTo(Book o) {
-        return BookComparators.ALLFIELDS.compare(book, o);
+    public int compareTo(BookObjectAdapter boa) {
+        return Comparator.comparing((Book book) -> book.getTitle())
+                .thenComparing(b -> b.getAuthor())
+                .thenComparingInt(b -> b.getYearOfPublication())
+                .compare(this.getBook(), boa.getBook());
     }
-
     public Book getBook() {
         return book;
     }
 }
+
