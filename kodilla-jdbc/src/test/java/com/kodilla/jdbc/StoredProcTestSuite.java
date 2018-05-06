@@ -49,7 +49,7 @@ public class StoredProcTestSuite {
         statement.execute(sqlProcedureCall);
         //then
 
-        String sqlCheckTable = "SELECT COUNT(*) AS HOW_MANY FROM READERS WHERE VIP_LEVEL=\"9\"";
+        String sqlCheckTable = "SELECT COUNT(*) AS HOW_MANY FROM BOOKS WHERE BESTSELLER=\"9\"";
         ResultSet rs = statement.executeQuery(sqlCheckTable);
         int howMany = -1;
         if (rs.next()) {
