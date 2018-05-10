@@ -28,4 +28,5 @@ public class CrudAppTestingApp {
         Select selectBoard = new Select(selectCombo);
         selectBoard.selectByIndex(3);
     }
+
 }
