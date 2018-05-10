@@ -59,9 +59,10 @@ public class CrudAppTestSuite {
 
         String taskName = createTrelloCard();
         sendTestTaskToTrello(taskName);
+        deleteTaskFromCrud(taskName);
         assertTrue(checkTaskExistsInTrello(taskName));
+        assertTrue(checkTaskExistsInCrud(taskName));
     }
-
 
     public void sendTestTaskToTrello(String taskName) throws InterruptedException {
 
@@ -110,6 +111,36 @@ public class CrudAppTestSuite {
                 .size() > 0;
 
         driverTrello.close();
+        return result;
+    }
+
+    public void deleteTaskFromCrud(String taskName) throws InterruptedException {
+
+        driver.switchTo().alert().accept();
+
+        while (!driver.findElement(By.xpath("//form[@class='datatable__row']")).isDisplayed()) ;
+
+        driver.findElements(By.xpath("//form[@class='datatable__row']")).stream()
+                .filter(anyForm -> anyForm.findElement(By.xpath(".//p[@class='datatable__field-value']"))
+                        .getText().contains(taskName))
+                .collect(Collectors.toList()).stream()
+                .forEach(theForm -> {
+                    WebElement buttonDelete = theForm.findElement(By.xpath(".//button[4]"));
+                    buttonDelete.click();
+                });
+    }
+
+    public boolean checkTaskExistsInCrud(String taskName) throws InterruptedException {
+        boolean result = false;
+
+        while (!driver.findElement(By.xpath("//form[@class='datatable__row']")).isDisplayed()) ;
+
+        result = driver.findElements(By.xpath("//form[@class='datatable__row']")).stream()
+                .filter(anyForm -> anyForm.findElement(By.xpath(".//p[@class='datatable__field-value']"))
+                        .getText().contains(taskName))
+                .collect(Collectors.toList())
+                .isEmpty();
+
         return result;
     }
 
