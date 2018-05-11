@@ -58,10 +58,12 @@ public class CrudAppTestSuite {
     public void shouldCreateTrelloCard() throws InterruptedException {
 
         String taskName = createTrelloCard();
+
         sendTestTaskToTrello(taskName);
-        deleteTaskFromCrud(taskName);
+        boolean isDeleted = deleteTaskFromCrud(taskName);
+
         assertTrue(checkTaskExistsInTrello(taskName));
-        assertTrue(checkTaskExistsInCrud(taskName));
+        assertTrue(isDeleted);
     }
 
     public void sendTestTaskToTrello(String taskName) throws InterruptedException {
@@ -114,7 +116,9 @@ public class CrudAppTestSuite {
         return result;
     }
 
-    public void deleteTaskFromCrud(String taskName) throws InterruptedException {
+    public boolean deleteTaskFromCrud(String taskName) throws InterruptedException {
+
+        final String XPATH_TASK_BY_NAME = "//p[contains(@data-task-name-paragraph,\"" + taskName + "\")]";
 
         driver.switchTo().alert().accept();
 
@@ -128,21 +132,26 @@ public class CrudAppTestSuite {
                     WebElement buttonDelete = theForm.findElement(By.xpath(".//button[4]"));
                     buttonDelete.click();
                 });
-    }
 
-    public boolean checkTaskExistsInCrud(String taskName) throws InterruptedException {
-        boolean result = false;
-
-        while (!driver.findElement(By.xpath("//form[@class='datatable__row']")).isDisplayed()) ;
-
-        result = driver.findElements(By.xpath("//form[@class='datatable__row']")).stream()
-                .filter(anyForm -> anyForm.findElement(By.xpath(".//p[@class='datatable__field-value']"))
-                        .getText().contains(taskName))
-                .collect(Collectors.toList())
-                .isEmpty();
+        driver.navigate().refresh();
+        boolean result = (driver.findElements(By.xpath(XPATH_TASK_BY_NAME)).isEmpty());
 
         return result;
     }
+//
+//    public boolean checkTaskExistsInCrud(String taskName) throws InterruptedException {
+//        boolean result = false;
+//
+//        while (!driver.findElement(By.xpath("//form[@class='datatable__row']")).isDisplayed()) ;
+//
+//        result = driver.findElements(By.xpath("//form[@class='datatable__row']")).stream()
+//                .filter(anyForm -> anyForm.findElement(By.xpath(".//p[@class='datatable__field-value']"))
+//                        .getText().contains(taskName))
+//                .collect(Collectors.toList())
+//                .isEmpty();
+//
+//        return result;
+//    }
 
 
 }
