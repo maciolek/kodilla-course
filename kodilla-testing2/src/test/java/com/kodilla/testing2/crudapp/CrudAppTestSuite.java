@@ -138,21 +138,6 @@ public class CrudAppTestSuite {
 
         return result;
     }
-//
-//    public boolean checkTaskExistsInCrud(String taskName) throws InterruptedException {
-//        boolean result = false;
-//
-//        while (!driver.findElement(By.xpath("//form[@class='datatable__row']")).isDisplayed()) ;
-//
-//        result = driver.findElements(By.xpath("//form[@class='datatable__row']")).stream()
-//                .filter(anyForm -> anyForm.findElement(By.xpath(".//p[@class='datatable__field-value']"))
-//                        .getText().contains(taskName))
-//                .collect(Collectors.toList())
-//                .isEmpty();
-//
-//        return result;
-//    }
-
 
 }
 
