@@ -4,19 +4,23 @@ public class InputtingData {
 
     Scanner scanner = new Scanner(System.in);
 
-    public String introduceText() {
+    public String readText() {
         String introducedText = scanner.next();
         return introducedText;
     }
 
-    public int introductionNumber() throws NumberFormatException {
+    public int readNumber() throws NumberFormatException {
         int introductionNumber = 0;
-        try {
-            introductionNumber = Integer.parseInt(introduceText());
-        } catch (NumberFormatException ex) {
-            Messages.showMessageWrongPlayerChoose();
-            introductionNumber();
-        }
+        int n =0;
+        do {
+            try {
+                introductionNumber = Integer.parseInt(readText());
+                n =3;
+            } catch (NumberFormatException ex) {
+                Messages.showMessageWrongPlayerChoose();
+                n++;
+            }
+        } while (n<3);
         return introductionNumber;
     }
 

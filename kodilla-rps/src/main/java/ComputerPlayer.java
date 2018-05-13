@@ -1,12 +1,14 @@
 import java.util.Random;
 
-public class Computer {
+public class ComputerPlayer implements Player {
 
     private int numberOfWins = 0;
+    private String name = "Computer";
 
-    public ActionType computerAction() {
+    private Random random = new Random();
+
+    public ActionType playerAction() {
         ActionType[] actionTypes = ActionType.values();
-        Random random = new Random();
         int computerChoice = random.nextInt(actionTypes.length);
         return actionTypes[computerChoice];
     }
@@ -17,5 +19,15 @@ public class Computer {
 
     public void addWin() {
         numberOfWins++;
+    }
+
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public void setName(String name) {
+        this.name = "Computer";
     }
 }

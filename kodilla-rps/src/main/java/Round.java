@@ -2,14 +2,14 @@ public class Round {
 
     ActionType playerAction;
     ActionType computerAction;
-    private Player player;
-    private Computer computer;
+    private Player humanPlayer;
+    private Player computerPlayer;
 
-    public Round(Player player, Computer computer) {
-        this.player = player;
-        this.computer = computer;
-        this.playerAction = player.playerAction();
-        this.computerAction = computer.computerAction();
+    public Round(Player humanPlayer, Player computerPlayer) {
+        this.humanPlayer = humanPlayer;
+        this.computerPlayer = computerPlayer;
+        this.playerAction = humanPlayer.playerAction();
+        this.computerAction = computerPlayer.playerAction();
     }
 
     public Result checkingWinnerOfRound() {
@@ -24,23 +24,5 @@ public class Round {
                 return (computerAction == ActionType.ROCK ? Result.LOSE : Result.WIN);
         }
         return Result.LOSE;
-    }
-
-    public void result() {
-        Result round = checkingWinnerOfRound();
-        switch (round) {
-            case WIN:
-                Messages.showWhenPlayerWin(playerAction, computerAction);
-                player.addWin();
-                break;
-            case LOSE:
-                Messages.showWhenPlayerLose(playerAction, computerAction);
-                computer.addWin();
-                break;
-            case TIE:
-                Messages.showWhenTie(playerAction, computerAction);
-                break;
-        }
-        Messages.showResultOfGame(player.getNumberOfWins(), computer.getNumberOfWins(), player.getName());
     }
 }

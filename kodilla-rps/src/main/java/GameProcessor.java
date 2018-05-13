@@ -1,35 +1,37 @@
 public class GameProcessor {
 
-    private Player player;
-    private Computer computer;
+    private Player player1;
+    private Player player2;
     private InputtingData inputtingData;
-    private int winsToEnd;
+    private int requiredWins;
 
-    public GameProcessor(Player player, Computer computer, InputtingData inputtingData) {
+    public GameProcessor(HumanPlayer player1, ComputerPlayer player2, InputtingData inputtingData) {
 
-        this.player = player;
-        this.computer = computer;
+        this.player1 = player1;
+        this.player2 = player2;
         this.inputtingData = inputtingData;
     }
 
+    //? po co tak? zamiast od razu startingData?
     public void startNewGame() {
         startingData();
     }
 
-    public void setWinsToEnd(int winsToEnd) {
-        this.winsToEnd = winsToEnd;
+    public void setRequiredWins(int requiredWins) {
+        this.requiredWins = requiredWins;
     }
 
     public void startingData() {
         Messages.askToName();
-        player.setName(inputtingData.introduceText());
+        player1.setName(inputtingData.readText());
         Messages.askToNumbersOfWinsToEnd();
-        setWinsToEnd(inputtingData.introductionNumber());
+        //sparwadzić jakość liczbę..
+        setRequiredWins(inputtingData.readNumber());
     }
 
     public boolean checkingWinsToEnd() {
-        if ((winsToEnd == player.getNumberOfWins()) ||
-                (winsToEnd == computer.getNumberOfWins())) {
+        if ((requiredWins == player1.getNumberOfWins()) ||
+                (requiredWins == player2.getNumberOfWins())) {
             Messages.ShowWinerGame(getNameOfWinnerGame());
             return true;
         }
@@ -61,10 +63,28 @@ public class GameProcessor {
     }
 
     public String getNameOfWinnerGame() {
-        if (winsToEnd == player.getNumberOfWins()) {
-            return player.getName();
+        if (requiredWins == player1.getNumberOfWins()) {
+            return player1.getName();
         } else {
-            return "Komputer";
+            return "ComputerPlayer";
         }
+    }
+
+    public void resultRound(Round round) {
+        Result result = round.checkingWinnerOfRound();
+        switch (result) {
+            case WIN:
+                Messages.showWhenPlayerWin(round.playerAction, round.computerAction);
+                player1.addWin();
+                break;
+            case LOSE:
+                Messages.showWhenPlayerLose(round.playerAction, round.computerAction);
+                player2.addWin();
+                break;
+            case TIE:
+                Messages.showWhenTie(round.playerAction, round.computerAction);
+                break;
+        }
+        Messages.showResultOfGame(player1.getNumberOfWins(), player2.getNumberOfWins(), player1.getName());
     }
 }

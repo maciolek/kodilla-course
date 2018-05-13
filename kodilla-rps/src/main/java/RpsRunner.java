@@ -7,14 +7,14 @@ public class RpsRunner {
             boolean end;
 
             InputtingData inputtingData = new InputtingData();
-            Player player = new Player(inputtingData);
-            Computer computer = new Computer();
-            GameProcessor gameProcessor = new GameProcessor(player, computer, inputtingData);
+            HumanPlayer humanPlayer = new HumanPlayer(inputtingData);
+            ComputerPlayer computerPlayer = new ComputerPlayer();
+            GameProcessor gameProcessor = new GameProcessor(humanPlayer, computerPlayer, inputtingData);
             gameProcessor.startNewGame();
 
             do {
-                Round round = new Round(player, computer);
-                round.result();
+                Round round = new Round(humanPlayer, computerPlayer);
+                gameProcessor.resultRound(round);
                 end = gameProcessor.checkingWinsToEnd();
 
             } while (!end);
