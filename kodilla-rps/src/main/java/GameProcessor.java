@@ -1,6 +1,5 @@
 public class GameProcessor {
 
-
     private InputtingData inputtingData;
     private Game game;
     private Round round;
@@ -15,7 +14,6 @@ public class GameProcessor {
         Messages.askToName();
         game.getPlayer1().setName(inputtingData.readText());
         Messages.askToNumbersOfWinsToEnd();
-        //sparwadzić jakość liczbę..
         game.setRequiredWins(inputtingData.readNumber());
     }
 
@@ -23,20 +21,20 @@ public class GameProcessor {
         round.getResultOfRound();
         round.checkingWinnerOfRound();
         showResultOfRound();
-        Messages.showResultOfGame(game);
-
+        Messages.showResultOfGame(game.getPlayer1().getName(), game.getPlayer2().getName(),
+                game.getNumberOfWinsPlayer1(),game.getNumberOfWinsPlayer2());
     }
 
     private void showResultOfRound() {
         if (round.getResultOfRound() == Result.TIE) {
-            Messages.showWhenTie(game);
+            Messages.showWhenTie(game.getPlayer1().getName(), game.getPlayer2().getName());
         } else {
-            Messages.showWhenResultOfRound(round);
+            Messages.showWhenResultOfRound(round.getWinnerOfRound().getName(),
+                    round.getPlayer1Action(), round.getPlayer2Action());
         }
-
     }
 
-    public boolean checkingWinsToEnd() {
+    public boolean checkingRequiredWins() {
         if ((game.getRequiredWins() == game.getNumberOfWinsPlayer1()) ||
                 (game.getRequiredWins() == game.getNumberOfWinsPlayer2())) {
             Messages.ShowWinerGame(getNameOfWinnerGame());
@@ -50,7 +48,7 @@ public class GameProcessor {
         char text = inputtingData.validationUserChoiceAfterGame();
         switch (text) {
             case 'x': {
-                Messages.showMessageBeforeEndGame();
+                                Messages.showMessageBeforeEndGame();
                 if (inputtingData.validationUserChoiceAfterGame() != 'x') {
                     Messages.showMessageWrongPlayerChoose();
                     isEndOfGame();

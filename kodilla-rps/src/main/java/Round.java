@@ -35,6 +35,7 @@ public class Round {
         } else if (getResultOfRound() == Result.LOSE) {
             game.addWinPlayer2();
             this.winnerOfRound = game.getPlayer2();
+
         }
     }
 

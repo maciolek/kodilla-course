@@ -1,4 +1,4 @@
-public class HumanPlayer implements Player{
+public class HumanPlayer implements Player {
 
     private String name;
 
@@ -6,14 +6,6 @@ public class HumanPlayer implements Player{
 
     public HumanPlayer(InputtingData inputtingData) {
         this.inputtingData = inputtingData;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public ActionType playerAction() {
@@ -30,5 +22,13 @@ public class HumanPlayer implements Player{
             default:
                 throw new IllegalArgumentException("Błędny wybór akcji!");
         }
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }
