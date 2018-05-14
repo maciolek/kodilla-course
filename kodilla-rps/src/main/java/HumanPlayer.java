@@ -1,7 +1,7 @@
 public class HumanPlayer implements Player{
 
     private String name;
-    private int numberOfWins = 0;
+
     private InputtingData inputtingData;
 
     public HumanPlayer(InputtingData inputtingData) {
@@ -14,14 +14,6 @@ public class HumanPlayer implements Player{
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public int getNumberOfWins() {
-        return numberOfWins;
-    }
-
-    public void addWin() {
-        numberOfWins++;
     }
 
     public ActionType playerAction() {

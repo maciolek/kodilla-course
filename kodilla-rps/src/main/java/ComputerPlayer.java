@@ -2,8 +2,7 @@ import java.util.Random;
 
 public class ComputerPlayer implements Player {
 
-    private int numberOfWins = 0;
-    private String name = "Computer";
+    private String name = "Komputer";
 
     private Random random = new Random();
 
@@ -11,14 +10,6 @@ public class ComputerPlayer implements Player {
         ActionType[] actionTypes = ActionType.values();
         int computerChoice = random.nextInt(actionTypes.length);
         return actionTypes[computerChoice];
-    }
-
-    public int getNumberOfWins() {
-        return numberOfWins;
-    }
-
-    public void addWin() {
-        numberOfWins++;
     }
 
     @Override

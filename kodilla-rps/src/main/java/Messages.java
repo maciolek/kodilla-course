@@ -27,11 +27,11 @@ public class Messages {
         System.out.println("Czy na pewno chcesz wyjść z gry? (naciśnij X)");
     }
 
-    public static void showResultOfGame(int playerWins, int computerWins, String playerName) {
+    public static void showResultOfGame(Game game) {
         System.out.println("-------------------------");
         System.out.println("Stan gry: ");
-        System.out.println("Wygrane: " + playerName.toUpperCase() + ": " + playerWins);
-        System.out.println("Wygrane komputera: " + computerWins);
+        System.out.println("Wygrane: " + game.getPlayer1().getName().toUpperCase() + ": " + game.getNumberOfWinsPlayer1());
+        System.out.println("Wygrane: " + game.getPlayer2().getName().toUpperCase() + ": " + game.getNumberOfWinsPlayer2());
     }
 
     public static void showMessageWrongPlayerChoose() {
@@ -46,16 +46,13 @@ public class Messages {
         System.out.println("klawisz 3 - zagranie \"nożyce\"");
     }
 
-    public static void showWhenPlayerWin(ActionType playerAction, ActionType computerAction) {
-        System.out.println("Gracz wygrał " + playerAction + " bije " + computerAction);
+    public static void showWhenResultOfRound(Round round) {
+        System.out.println("Rundę wygrał: " + round.getWinnerOfRound() +
+                " -> " + round.getPlayer1Action() + " beats " + round.getPlayer2Action());
     }
 
-    public static void showWhenPlayerLose(ActionType playerAction, ActionType computerAction) {
-        System.out.println("Komputer wygrał, " + playerAction + " przegrywa z  " + computerAction);
-    }
-
-    public static void showWhenTie(ActionType playerAction, ActionType computerAction) {
-        System.out.println("Remis, gracz: " + playerAction + " , komputer " + computerAction);
+    public static void showWhenTie(Game game) {
+        System.out.println("Remis, gracz: " + game.getPlayer1().getName() + " , gracz: " + game.getPlayer2().getName());
     }
 
     public static void ShowWinerGame(String winnerName) {
