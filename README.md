@@ -1,6 +1,8 @@
 <h1>  kodilla-course </h1>
 
-This is a repository with exercises made during Kodilla course. Topics covered:
+This is a repository with exercises made during Kodilla course.
+
+<h5> Topics covered: </h5>
 
 <h5> Core Java: </h5>
 
