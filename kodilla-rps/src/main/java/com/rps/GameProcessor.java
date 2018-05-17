@@ -28,11 +28,16 @@ public class GameProcessor {
     }
 
     private void showResultOfRound() {
-        if (round.getResultOfRound() == Result.TIE) {
+        Player winnerOfRound = round.getWinnerOfRound();
+        if (winnerOfRound == null) {
             Messages.showWhenTie(game.getNumberOfround(), round.getPlayer1Action(), round.getPlayer2Action());
-        } else {
+        }
+        else if (winnerOfRound == game.getPlayer1()) {
             Messages.showWhenResultOfRound(game.getNumberOfround(), round.getWinnerOfRound().getName(),
                     round.getPlayer1Action(), round.getPlayer2Action());
+        } else {
+            Messages.showWhenResultOfRound(game.getNumberOfround(), round.getWinnerOfRound().getName(),
+                    round.getPlayer2Action(), round.getPlayer1Action());
         }
     }
 

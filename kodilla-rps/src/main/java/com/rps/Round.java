@@ -7,7 +7,6 @@ public class Round {
     private Game game;
     private Player winnerOfRound;
 
-
     public Round(Game game) {
         this.player1Action = game.getPlayer1().playerAction();
         this.player2Action = game.getPlayer2().playerAction();
