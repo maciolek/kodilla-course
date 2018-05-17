@@ -1,20 +1,22 @@
+package com.rps;
+
 public class GameProcessor {
 
-    private InputtingData inputtingData;
+    private UserInputReader userInputReader;
     private Game game;
     private Round round;
 
-    public GameProcessor(InputtingData inputtingData, Game game) {
+    public GameProcessor(UserInputReader userInputReader, Game game) {
 
-        this.inputtingData = inputtingData;
+        this.userInputReader = userInputReader;
         this.game = game;
     }
 
     public void startNewGame() {
         Messages.askToName();
-        game.getPlayer1().setName(inputtingData.readText());
+        game.getPlayer1().setName(userInputReader.readText());
         Messages.askToNumbersOfWinsToEnd();
-        game.setRequiredWins(inputtingData.readNumber());
+        game.setRequiredWins(userInputReader.readNumber());
     }
 
     public void startNewRound() {
@@ -22,14 +24,14 @@ public class GameProcessor {
         round.checkingWinnerOfRound();
         showResultOfRound();
         Messages.showResultOfGame(game.getPlayer1().getName(), game.getPlayer2().getName(),
-                game.getNumberOfWinsPlayer1(),game.getNumberOfWinsPlayer2());
+                game.getNumberOfWinsPlayer1(), game.getNumberOfWinsPlayer2());
     }
 
     private void showResultOfRound() {
         if (round.getResultOfRound() == Result.TIE) {
-            Messages.showWhenTie(game.getPlayer1().getName(), game.getPlayer2().getName());
+            Messages.showWhenTie(game.getNumberOfround(), round.getPlayer1Action(), round.getPlayer2Action());
         } else {
-            Messages.showWhenResultOfRound(round.getWinnerOfRound().getName(),
+            Messages.showWhenResultOfRound(game.getNumberOfround(), round.getWinnerOfRound().getName(),
                     round.getPlayer1Action(), round.getPlayer2Action());
         }
     }
@@ -45,11 +47,11 @@ public class GameProcessor {
 
     public boolean isEndOfGame() {
         Messages.showMesageAfterGame();
-        char text = inputtingData.validationUserChoiceAfterGame();
+        char text = userInputReader.validationUserChoiceAfterGame();
         switch (text) {
             case 'x': {
-                                Messages.showMessageBeforeEndGame();
-                if (inputtingData.validationUserChoiceAfterGame() != 'x') {
+                Messages.showMessageBeforeEndGame();
+                if (userInputReader.validationUserChoiceAfterGame() != 'x') {
                     Messages.showMessageWrongPlayerChoose();
                     isEndOfGame();
                 }
@@ -57,7 +59,7 @@ public class GameProcessor {
             }
             case 'n': {
                 Messages.showMessageBeforePlayAgain();
-                if (inputtingData.validationUserChoiceAfterGame() != 'n') {
+                if (userInputReader.validationUserChoiceAfterGame() != 'n') {
                     Messages.showMessageWrongPlayerChoose();
                     isEndOfGame();
                 }

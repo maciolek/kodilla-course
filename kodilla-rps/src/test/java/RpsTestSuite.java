@@ -1,4 +1,4 @@
-
+import com.rps.*;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -25,74 +25,150 @@ public class RpsTestSuite {
     @InjectMocks
     Game game;
 
-    @Mock
+    @InjectMocks
     HumanPlayer player1;
 
     @Mock
     ComputerPlayer player2;
 
     @Mock
-    InputtingData inputtingData;
+    UserInputReader userInputReader;
 
 
     @Test
     public void shouldTakeText() {
         //given
-        //when
         String inputText = "some text";
-        InputStream in = new ByteArrayInputStream(inputText.getBytes());
-        System.setIn(in);
+
+        //when
+        when(userInputReader.readText()).thenReturn(inputText);
+
         //then
-        assertEquals("some text", inputtingData.readText());
+        assertEquals(inputText, userInputReader.readText());
     }
 
     @Test
     public void shouldTakeIntroducedName() {
         //given
-        //when
         String inputedName = "Darek";
-        InputStream in = new ByteArrayInputStream(inputedName.getBytes());
-        System.setIn(in);
+
+        //when
+        when(userInputReader.readText()).thenReturn(inputedName);
         when(player1.getName()).thenReturn(inputedName);
 
         //then
-        assertEquals("Darek", player1.getName());
+        assertEquals(inputedName, player1.getName());
     }
 
     @Test
     public void shouldTakeIntroducedNumber() {
         //given
+        int inputNumber = 1;
 
         //when
-        String inputNumber = "1";
-        InputStream in = new ByteArrayInputStream(inputNumber.getBytes());
-        System.setIn(in);
+        when(userInputReader.readNumber()).thenReturn(inputNumber);
+        int actualNumber = userInputReader.readNumber();
 
-        when(inputtingData.readNumber()).thenReturn(1);
-        int actualNumber = inputtingData.readNumber();
         //then
         assertEquals(1, actualNumber);
     }
 
-    @Ignore
+
     @Test
     public void shouldTakeHumanPlayerActionRock() {
 
         //given
-        //when
-        String inputNumber = "1";
-        InputStream in = new ByteArrayInputStream(inputNumber.getBytes());
-        System.setIn(in);
+        int inputNumber = 1;
 
-        when(inputtingData.readNumber()).thenReturn(3);
-        when(player1.playerAction()).thenReturn(ActionType.PAPER);
+        //when
+        when(userInputReader.readNumber()).thenReturn(inputNumber);
+        int actualNumber = userInputReader.readNumber();
+
+        when(player1.playerAction()).thenReturn(ActionType.ROCK);
         ActionType actionTypeHumanPlayer = player1.playerAction();
         //then
 
         Assert.assertEquals(ActionType.ROCK, actionTypeHumanPlayer);
     }
 
-    public void testGetResultOfRoundWhenTie(){
+    @Test
+    public void shouldTakeHumanPlayerActionPaper() {
+
+        //given
+        int inputNumber = 2;
+
+        //when
+        when(userInputReader.readNumber()).thenReturn(inputNumber);
+        int actualNumber = userInputReader.readNumber();
+
+        when(player1.playerAction()).thenReturn(ActionType.PAPER);
+        ActionType actionTypeHumanPlayer = player1.playerAction();
+        //then
+
+        Assert.assertEquals(ActionType.PAPER, actionTypeHumanPlayer);
+    }
+
+    @Test
+    public void shouldTakeHumanPlayerActionScissors() {
+
+        //given
+        int inputNumber = 2;
+
+        //when
+        when(userInputReader.readNumber()).thenReturn(inputNumber);
+        int actualNumber = userInputReader.readNumber();
+
+        when(player1.playerAction()).thenReturn(ActionType.SCISSORS);
+        ActionType actionTypeHumanPlayer = player1.playerAction();
+        //then
+
+        Assert.assertEquals(ActionType.SCISSORS, actionTypeHumanPlayer);
+    }
+
+
+    @Test
+    public void testReadNumberWhenPlayerChoseNumberOutOfScope() throws IllegalArgumentException {
+
+        //given
+        int firstChoseNumber = 8;
+
+        //when
+        when(userInputReader.readNumber()).thenReturn(firstChoseNumber);
+
+        //then
+        try {
+            player1.playerAction();
+        } catch (IllegalArgumentException ex) {
+        } finally {
+            verify(userInputReader, times(3)).readNumber();
+            verifyNoMoreInteractions(userInputReader);
+        }
+    }
+
+    @Test
+    public void getResultOfRoundWhenTie(){
+        //given
+        int inputNumber = 1;
+
+        //when
+        when(userInputReader.readNumber()).thenReturn(inputNumber);
+        when(player1.playerAction()).thenReturn(ActionType.PAPER);
+        userInputReader.readNumber();
+        when(player2.playerAction()).thenReturn(ActionType.PAPER);
+        when(round.getResultOfRound()).thenReturn(Result.TIE);
+
+        Result actulaResult = round.getResultOfRound();
+        //then
+        Assert.assertEquals(Result.TIE, actulaResult);
+
+        //
+
+
+    }
+
+    @Ignore
+    @Test
+    public void testGetResultOfRoundWhenTie() {
         //given
         //when
         String inputNumber = "1";
@@ -100,31 +176,28 @@ public class RpsTestSuite {
         System.setIn(in);
 
         when(player1.playerAction()).thenReturn(ActionType.ROCK);
-
         //then
     }
 
     @Ignore
     @Test
-    public void testReadNumberWhenIntroducedText() {
+    public void testReadNumberWhenIntroducedText() throws NumberFormatException {
         //given
-        //when
-        String inputNumber = "text";
-        InputStream in = new ByteArrayInputStream(inputNumber.getBytes());
-        System.setIn(in);
+        String inputText = "text";
 
-        when(inputtingData.readText()).thenReturn(inputNumber);
-        when(inputtingData.readNumber()).thenThrow(new NumberFormatException());
+        //when
+        when(userInputReader.readText()).thenReturn(inputText);
+        when(userInputReader.readNumber()).thenThrow(new NumberFormatException());
 
         //then
-
         try {
-            inputtingData.readNumber();
+  //          userInputReader.readText();
+            userInputReader.readNumber();
         } catch (NumberFormatException ex) {
+
+        } finally {
+            verify(userInputReader, times(3)).readText();
+            verifyNoMoreInteractions(userInputReader.readText());
         }
-
-        verify(inputtingData, times(3)).readText();
     }
-
-
 }

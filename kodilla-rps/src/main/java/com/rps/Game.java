@@ -1,3 +1,5 @@
+package com.rps;
+
 public class Game {
 
     private Player player1;
@@ -5,6 +7,7 @@ public class Game {
     private int numberOfWinsPlayer1 = 0;
     private int numberOfWinsPlayer2 = 0;
     private int requiredWins;
+    private int numberOfrounds = 0;
 
     public Game(Player player1, Player player2) {
         this.player1 = player1;
@@ -22,6 +25,10 @@ public class Game {
 
     public void addWinPlayer2() {
         numberOfWinsPlayer2++;
+    }
+
+    public void addNextRound() {
+        numberOfrounds++;
     }
 
     public int getNumberOfWinsPlayer2() {
@@ -42,6 +49,10 @@ public class Game {
 
     public Player getPlayer2() {
         return player2;
+    }
+
+    public int getNumberOfround() {
+        return numberOfrounds;
     }
 }
 

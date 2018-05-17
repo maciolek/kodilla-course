@@ -1,3 +1,5 @@
+package com.rps;
+
 public interface Player {
 
     public String getName();

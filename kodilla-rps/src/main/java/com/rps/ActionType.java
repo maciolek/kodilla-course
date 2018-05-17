@@ -1,3 +1,4 @@
+package com.rps;
 
 public enum ActionType {
 

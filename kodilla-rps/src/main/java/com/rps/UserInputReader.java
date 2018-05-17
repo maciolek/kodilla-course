@@ -1,8 +1,8 @@
+package com.rps;
+
 import java.util.Scanner;
 
-public class InputtingData {
-
-    int n = 0;
+public class UserInputReader {
 
     public String readText() {
         Scanner scanner = new Scanner(System.in);
@@ -11,33 +11,30 @@ public class InputtingData {
 
     public int readNumber() throws NumberFormatException {
         int introductedNumber = 0;
-        int n = 0;
-        do {
+        for (int n = 0; n < 3; n++) {
             try {
                 introductedNumber = Integer.parseInt(readText());
-                n = 3;
+                if (introductedNumber > 0 || introductedNumber < 10) {
+                    break;
+                }
+                Messages.showMessageWrongPlayerChoose();
             } catch (NumberFormatException ex) {
                 Messages.showMessageWrongPlayerChoose();
-                n++;
-                if (n == 3) {
-                    //co tu wyrzucić?
-                    throw new IllegalArgumentException("Wprowadzono błędnie cyfrę");
-                }
+                continue;
             }
-        } while (n < 3);
+        }
         return introductedNumber;
     }
 
     public char validationUserChoiceAfterGame() {
-        Scanner scanner = new Scanner(System.in);
+        while (true) {
+            Scanner scanner = new Scanner(System.in);
             char text = scanner.next().toLowerCase().charAt(0);
             if (text != 'n' & text != 'x') {
-                System.out.println("Dokonano złego wyboru, wprowadź komendę jeszcze");
-                validationUserChoiceAfterGame();
+                Messages.showMessageWrongPlayerChoose();
+                continue;
             }
             return text;
         }
-
     }
-
-
+}

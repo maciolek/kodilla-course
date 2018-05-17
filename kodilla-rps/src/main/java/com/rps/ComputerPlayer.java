@@ -1,3 +1,5 @@
+package com.rps;
+
 import java.util.Random;
 
 public class ComputerPlayer implements Player {
