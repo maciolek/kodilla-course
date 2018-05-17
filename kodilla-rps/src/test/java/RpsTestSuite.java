@@ -7,9 +7,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
-
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
 
@@ -146,37 +143,38 @@ public class RpsTestSuite {
     }
 
     @Test
-    public void getResultOfRoundWhenTie(){
+    public void getResultOfRoundWhenTie() {
         //given
         int inputNumber = 1;
 
         //when
         when(userInputReader.readNumber()).thenReturn(inputNumber);
-        when(player1.playerAction()).thenReturn(ActionType.PAPER);
+        when(player1.playerAction()).thenReturn(ActionType.ROCK);
         userInputReader.readNumber();
-        when(player2.playerAction()).thenReturn(ActionType.PAPER);
+        when(player2.playerAction()).thenReturn(ActionType.ROCK);
         when(round.getResultOfRound()).thenReturn(Result.TIE);
 
         Result actulaResult = round.getResultOfRound();
         //then
         Assert.assertEquals(Result.TIE, actulaResult);
-
-        //
-
-
     }
 
-    @Ignore
     @Test
-    public void testGetResultOfRoundWhenTie() {
+    public void getResultOfRoundWhenPlayer1Won() {
         //given
-        //when
-        String inputNumber = "1";
-        InputStream in = new ByteArrayInputStream(inputNumber.getBytes());
-        System.setIn(in);
+        int inputNumber = 1;
 
+        //when
+        when(userInputReader.readNumber()).thenReturn(inputNumber);
         when(player1.playerAction()).thenReturn(ActionType.ROCK);
+        when(player2.playerAction()).thenReturn(ActionType.SCISSORS);
+        when(round.getResultOfRound()).thenReturn(Result.WIN);
+        userInputReader.readNumber();
+
+        Result actulaResult = round.getResultOfRound();
+
         //then
+        Assert.assertEquals(Result.WIN, actulaResult);
     }
 
     @Ignore
@@ -191,7 +189,7 @@ public class RpsTestSuite {
 
         //then
         try {
-  //          userInputReader.readText();
+            //          userInputReader.readText();
             userInputReader.readNumber();
         } catch (NumberFormatException ex) {
 
