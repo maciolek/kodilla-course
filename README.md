@@ -8,33 +8,37 @@ This is a repository with exercises made during Kodilla course. Topics covered:
 * Lambda expression
 * Stream
 
-Design patterns:
+<h5>Design patterns: </h5>
 
-Adapter
-Builder
-Decorator
-Facade
-Factory
-Observer
-Prototype
-Singleton
-Strategy
-Testing:
+* Adapter
+* Builder
+* Decorator
+* Facade
+* Factory
+* Observer
+* Prototype
+* Singleton
+* Strategy
 
-Unit tests (JUnit, Mockito)
-Integration tests (Selenium)
-Spring:
+<h5>Testing:</h5>
 
-Beans
-Components
-Dependency Injection
-Hibernate:
+* Unit tests (JUnit, Mockito)
+* Integration tests (Selenium)
 
-Entities
-Entity relationship
-HQL, Named Queries
-Design principles:
+<h5> Spring: </h5>
 
-SOLID
-DRY
-Clean code
+* Beans
+* Components
+* Dependency Injection
+
+<h5> Hibernate: </h5>
+
+* Entities
+* Entity relationship
+* HQL, Named Queries
+
+<h5> Design principles: </h5>
+
+* SOLID
+* DRY
+* Clean code
