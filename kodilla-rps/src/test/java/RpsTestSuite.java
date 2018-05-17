@@ -25,7 +25,7 @@ public class RpsTestSuite {
     @InjectMocks
     Game game;
 
-    @InjectMocks
+    @Mock
     HumanPlayer player1;
 
     @Mock
@@ -125,7 +125,7 @@ public class RpsTestSuite {
         Assert.assertEquals(ActionType.SCISSORS, actionTypeHumanPlayer);
     }
 
-
+    @Ignore
     @Test
     public void testReadNumberWhenPlayerChoseNumberOutOfScope() throws IllegalArgumentException {
 
@@ -134,7 +134,7 @@ public class RpsTestSuite {
 
         //when
         when(userInputReader.readNumber()).thenReturn(firstChoseNumber);
-
+        when(player1.playerAction());
         //then
         try {
             player1.playerAction();
